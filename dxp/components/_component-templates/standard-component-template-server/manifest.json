@@ -1,0 +1,116 @@
+{
+    "$schema": "http://localhost:3000/schemas/v1.json",
+    "name": "template",
+    "namespace": "template-db",
+    "displayName": "Template",
+    "description": "Template to be copied to create new components for SERVER type. SERVER type allows for client side JS and CSS",
+    "version": "0.0.1",
+    "mainFunction": "main",
+    "type": "server",
+    "icon": {
+        "id": "fiber_new",
+        "color": {
+            "type": "enum",
+            "value": "blue"
+        }
+    },
+    "functions": [
+        {
+            "name": "main",
+            "entry": "main.cjs",
+            "input": {
+                "type": "object",
+                "properties": {
+                    "uniqueID": {
+                        "type": "string",
+                        "title": "Unique ID",
+                        "description": "Unique ID to be set on the wrapper level."
+                    },
+                    "paddingTop": {
+                        "type": "string",
+                        "title": "Space above",
+                        "description": "Padding size above wrapper.",
+                        "oneOf": [
+                            {"enum": ["default"], "title": "Default"},
+                            {"enum": ["p-t-0"], "title": "none"}
+                        ],
+                        "default": "default"
+                    },
+                    "paddingBottom": {
+                        "type": "string",
+                        "title": "Space below",
+                        "description": "Padding size below wrapper.",
+                        "oneOf": [
+                            {"enum": ["default"], "title": "Default"},
+                            {"enum": ["p-b-0"], "title": "none"}
+                        ],
+                        "default": "default"
+                    },
+                    "backgroundColour": {
+                        "type": "string",
+                        "title": "Background colour",
+                        "description": "Sets the background colour from the wrapper level",
+                        "oneOf": [
+                            {"enum": ["bg-white"], "title": "White"},
+                            {"enum": ["bg-sand-2"], "title": "Beige"},
+                            {"enum": ["bg-ocean-3"], "title": "Mid Blue"}
+                        ],
+                        "default": "bg-white"
+                    },
+                    "headerText": {
+                        "type": "string",
+                        "title": "Header text",
+                        "description": "Sets the components header on page"
+                    },
+                    "introText": {
+                        "type": "FormattedText",
+                        "title": "introText",
+                        "description": "Sets the components intro text, sits under the header."
+                    }
+                },
+                "required": [
+                    "paddingTop",
+                    "paddingBottom",
+                    "backgroundColour"
+                ]
+            },
+            "output": {
+                "responseType": "html",
+                "staticFiles": [
+                    {
+                        "location": "header",
+                        "file": {
+                            "type": "css",
+                            "filepath": "default.css"
+                        }
+                    },
+                    {
+                        "location": "footer",
+                        "file": {
+                            "type": "js",
+                            "filepath": "default.js"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "previews": {
+        "default": {
+            "functionData": {
+                "main": {
+                    "inputData": {
+                        "type": "file",
+                        "path": "previews/example.data.json"
+                    },
+                    "wrapper": {
+                        "path": "previews/preview.html"
+                    }
+                }
+            }
+        }
+    },
+    "staticFiles": {
+        "locationRoot": "static"
+    }
+}

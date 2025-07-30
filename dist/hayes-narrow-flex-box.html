@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en-au">
+<head>
+    <title>Hayes Narrow Column</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="https://www.jcu.edu.au/_media/page-elements/favicon.ico">
+
+    <!-- Connect to google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Open Sans font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet" />
+    <!-- Playfair Display -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet" />
+
+    <!-- New CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="../main.css">
+
+    <!-- New head scripts -->
+    <script src="../main.js"></script>
+    <script src="../unminified-test.js"></script>
+
+    <!-- JQUERY CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+        </script>
+
+</head>
+
+<body class="page-top page-wrapper">
+
+    <header class="header">
+
+        <nav id="skip_links" aria-label="Skip links menu" class="flex align-center space-center">
+            <!-- TODO: update anchor links -->
+            <a href="#jcu-v1-main-navigation">Skip to main navigation</a>
+            <a href="#main">Skip to main content</a>
+        </nav>
+
+        <div id="header--utility-menu" class="flex">
+            <div class="container m-t-0 align-center w-100 flex">
+                <nav id="utility_links" aria-label="Utility menu links">
+                    <a class="f-display-6" href="https://www.jcu.edu.au/staff">Staff</a>
+                    <a class="m-l-075 p-l-075 f-display-6 border-left" href="https://www.jcu.edu.au/redirect/jcuapp">JCU
+                        App</a>
+                    <a class="m-l-075 p-l-075 f-display-6 border-left" href="https://www.jcu.edu.au/library">Library</a>
+                    <a class="m-l-075 p-l-075 f-display-6 border-left"
+                        href="https://www.jcu.edu.au/learn/log-in-to-learnjcu">
+                        LearnJCU
+                    </a>
+                    <a class="m-l-075 p-l-075 f-display-6 border-left"
+                        href="https://www.jcu.edu.au/jcu-contact-information">
+                        Contact
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="header--menu flex">
+            <div class="header--menu--outer-wrapper container m-t-0 flex space-between w-100">
+                <!-- align-center  -->
+                <div class="header--menu-logo flex h-100">
+                    <a class="header--menu-logo-link" href="https://www.jcu.edu.au">
+                        James Cook University Home
+                    </a>
+                </div>
+                
+                <div class="header--menu--cta-links flex align-center p-r-250 w-100">
+                    <nav class=" flex h-100" id="main-navigation" aria-label="Utility menu links">
+                        <div>
+                            <a class="header--menu--cta-links_item--L1 flex h-100 f-semibold f-lead align-center" href="https://www.jcu.edu.au/#">Apply to JCU</a>
+                        </div>
+                        <div>
+                            <a class="header--menu--cta-links_item--L1 flex h-100 f-semibold f-lead align-center" href="https://www.jcu.edu.au/#">JCU Courses</a>
+                        </div>
+                        <div>
+                            <a class="header--menu--cta-links_item--L1 flex h-100 f-semibold f-lead align-center" href="https://www.jcu.edu.au/#">Make an enquiry</a>
+                        </div>
+                    </nav>
+                </div>
+    
+                <div class=" flex space-center align-center f-display-6">
+                    <button class="header--menu--mobile-nav-btn m-b-0 btn secondary-one border-none p-100 flex flex-column align-center" type="button" aria-label="Search JCU" class="header--menu--mobile-nav-buttons">
+                        <span class="header--menu-mobile-nav--btn--icon "></span>
+                        <span>Search</span>
+                    </button>
+                    <button class="header--menu--mobile-nav-btn btn border-none p-100 flex flex-column align-center" type="button" aria-label="Search JCU" class="header--menu--mobile-nav-buttons">
+                        <span class="header--menu-mobile-nav--btn--icon menu-icon">
+                        </span>
+                        <span>Menu</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div class="header--menu--search-wrapper">
+            <div class="header--menu--search-container">
+                <form method="GET" action="/search" id="searchForm" class="flex flex-row flex-wrap space-center p-200">
+                    <label class="hidden">collection
+                        <input hidden="" type="text" name="collection" value="jcua">
+                    </label>
+                    <label class="w-100 f-display-3" for="search-query">JCU: Ready today for tomorrow</label>
+                    
+                    <!-- TODO: remove this class: header--menu--search-checkboxes -->
+                    <div class="header--menu--search-checkboxes flex w-100">
+                        <ul class="header--menu--search-checkboxes-list flex flex-column list-none p-0">
+                        <li class="header--menu--search-checkboxes-list-item">
+                                <input type="radio" data-url="" name="searchRadios" value="searchAllContent" id="searchAllContent" class="" checked="">
+                                <label for="searchAllContent" class="f-semibold">Search all content</label>
+                            </li>
+                            <li class="header--menu--search-checkboxes-list-item">
+                                <input type="radio" data-url="https://www.jcu.edu.au/courses" name="searchRadios" value="searchCourse" id="searchCourse" class="">
+                                <label for="searchCourse" class="f-semibold">Search courses</label>
+                            </li>
+                            <li class="header--menu--search-checkboxes-list-item p-b-050">
+                                <div class="header--menu--search-chevron"></div>
+                                <a class="f-semibold" href="https://www.jcu.edu.au/courses-and-study">Browse study areas</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex w-100">
+                        <input id="search-query" class="search-query" type="text" name="query">
+                        <button class="search-btn" type="submit" aria-label="submit search query"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+    <nav class="breadcrumbs container p-b-050 p-t-050 f-caption" aria-label="Breadcrumb navigation">
+        <ol class="flex flex-wrap align-center gap-050 p-0 m-0 list-none" itemscope itemtype="https://schema.org/BreadcrumbList">
+            <li class="" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a href="https://www.jcu.edu.au" itemprop="item">
+                    <span itemprop="name">Home</span>
+                </a>
+                <meta class="breadcrumbs--position-metaprop" itemprop="position" content="1" />
+                
+            </li>
+            <li class="" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a href="https://www.jcu.edu.au" itemprop="item">
+                    <span itemprop="name">Students</span>
+                </a>
+                <meta class="breadcrumbs--position-metaprop" itemprop="position" content="1" />
+            </li>
+            <li class="" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a href="https://www.jcu.edu.au" itemprop="item">
+                    <span itemprop="name">Accommodation</span>
+                </a>
+                <meta class="breadcrumbs--position-metaprop" itemprop="position" content="1" />
+                
+            </li>
+            <li class="" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <span class="current" itemprop="name" aria-current="page">Cairns Accommodation</span>
+                <meta itemprop="item" content="https://www.jcu.edu.au" />
+                <meta class="breadcrumbs--position-metaprop" itemprop="position" content="1" />
+            </li>
+        </ol>
+    </nav>
+    <div class="m-b-200 bg-beige">
+        <div class="container">
+            <h1 class="wrapper">Heading One</h1>        
+        </div>
+    </div>
+<!-- gap-200 -->
+    <div id="body--content-outer-wrapper" class="flex container">
+        <!-- bg--grey--light -->
+    <div id="nav--outside-wrapper" class=" p-b-100">
+        <nav aria-label="Section Navigation" >
+            <!-- m-b--250 -->
+            <button id="nav--top-heading" class="btn secondary-two round-med m-t-100 d-none-lrg" aria-expanded="false">
+                <h2 id="nav--section-heading" class="f-subtitle-2" >Show menu</h2>
+            </button>
+
+            <div id="nav--link-wrapper" class="nav--section-content">
+
+                <a href="https://www.jcu.edu.au/top-level-node">
+                    <h3 class="border-bottom m-b-0 p-b-100">Title of top level node</h3>
+                </a>
+                
+                <ul class="p-l-0 list-none">
+                    <li>
+                    <a aria-expanded="true" class="nav-button m-b-0 p-l-0 p-t-050 p-b-050 p-r-0">
+                        <span class="nav--link-text">lorem ipsum</span>
+                        
+                    </a>
+                    <!-- if page is currenly viewed then sublinks will be active -->
+                    <section class="nav--section-content">
+                        <ul class="list-none p-l-0 p-b-050">
+                            <li class="m-l-050 p-t-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block m-b-0">
+                                    <span class="nav--link-text">lorem ipsum</span>
+                                </a> 
+                            </li>
+                            <li class="m-l-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block m-b-0">
+                                    <span class="nav--link-text">lorem ipsum</span>
+                                </a> 
+                            </li>
+                            <li class="m-l-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block m-b-0">
+                                    <span class="nav--link-text">lorem ipsum</span>
+                                </a> 
+                            </li>
+                        </ul>
+                    </section>                    
+                    </li>
+                    
+                    <li class=" active">
+                    <a aria-expanded="false" class="nav-button m-b-0 p-l-0 p-t-050 p-b-050 p-r-0">
+                        <span class="nav--link-text">lorem ipsum</span>
+                        
+                    </a>
+                    <section hidden class="nav--section-content">
+                        <ul class="list-none p-l-0 p-b-050">
+                            <li class="m-l-050 p-t-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block m-b-0" >
+                                    <span class="nav--link-text">lorem ipsum</span>
+                                </a> 
+                            </li>
+                            <li class="m-l-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block m-b-0">
+                                    <span class="nav--link-text">lorem ipsum</span>
+                                </a> 
+                            </li>
+                            <li class="m-l-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block m-b-0">
+                                    <span class="nav--link-text">lorem ipsum</span>
+                                </a> 
+                            </li>
+                        </ul>
+                    </section>
+                    </li>
+                    
+                    <li>
+                    <a href="https://matrix-dev.jcu.edu.au/standard-page-test-narrow-design" aria-expanded="false" class="nav-button m-b-0 p-l-0 p-t-050 p-b-050 p-r-none">
+                        <span class="nav--link-text">lorem ipsum</span>
+                        
+                    </a>
+                    <section hidden class="nav--section-content">
+                        <ul class="list-none p-l-0 p-b-050">
+                            <li class="m-l-050 p-t-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block m-b-0" >
+                                    <span class="nav--link-text">lorem ipsum</span>
+                                </a> 
+                            </li>
+                            <li class="m-l-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block m-b-0" >
+                                    <span class="nav--link-text">lorem ipsum</span>
+                                </a> 
+                            </li>
+                            <li class="m-l-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block m-b-0">
+                                    <span class="nav--link-text">lorem ipsum</span>
+                                </a> 
+                            </li>
+                        </ul>
+                    </section>   
+                    </li>
+                    
+                    <li>
+                    <a aria-expanded="false" class="nav-button m-b-0 p-l-0 p-t-050 p-b-050 p-r-0">
+                        <span class="nav--link-text">lorem ipsum</span>
+                        
+                    </a>
+                    <section hidden class="nav--section-content">
+                        <ul class="list-none p-l-0 p-b-050">
+                            <li class="m-l-050 p-t-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block m-b-0" >
+                                    <span class="nav--link-text">lorem ipsum</span>
+                                </a> 
+                            </li>
+                            <li class="m-l-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block  m-b-0" >
+                                    <span class="nav--link-text">lorem ipsum</span>
+                                </a> 
+                            </li>
+                            <li class="m-l-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block m-b-0">
+                                    <span class="nav--link-text">lorem ipsum</span>
+                                </a> 
+                            </li>
+                        </ul>
+                    </section>   
+                    </li>
+                    
+                    <li>
+                    <a aria-expanded="false" class="nav-button m-b-0 p-l-0 p-t-050 p-b-050 p-r-0">
+                        <span class="nav--link-text">lorem ipsum</span>
+                        
+                    </a>
+                    <section hidden class="nav--section-content">
+                        <ul class="list-none p-l-0 p-b-050">
+                            <li class="m-l-050 p-t-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block m-b-0" >
+                                    lorem ipsum
+                                </a> 
+                            </li>
+                            <li class="m-l-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block  m-b-0" >
+                                    lorem ipsum
+                                </a> 
+                            </li>
+                            <li class="m-l-050">
+                                <a href="https://www.jcu.edu.au" class="border-left d-block m-b-0">lorem ipsum</a> 
+                            </li>
+                        </ul>
+                    </section> 
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+            <div id="body--content-inner-wrapper">
+                <div class="wrapper">
+                    <div class="container">
+                        <h2>Header Two</h2>
+                        <p><a href="https://www.jcu.edu.au">THis where the content will go</a></p>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="container">
+                        <h2>Header Two</h2>
+                        <p>What is Lorem Ipsum?
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing software like Aldus PageMaker including
+                            versions of Lorem Ipsum.
+                        </p>
+                        <p>
+                            Why do we use it?
+                            It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                            here', making it look like readable English. Many desktop publishing packages and web page
+                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                            uncover many web sites still in their infancy. Various versions have evolved over the years,
+                            sometimes by accident, sometimes on purpose (injected humour and the like).
+                        </p>
+                        <p>
+                            Where does it come from?
+                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
+                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
+                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
+                            Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the
+                            word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from
+                            sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+                            Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+                            popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+                            amet..", comes from a line in section 1.10.32.
+
+                        </p>
+                        <p>
+                            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
+                            interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
+                            also reproduced in their exact original form, accompanied by English versions from the 1914
+                            translation by H. Rackham.
+                        </p>
+
+
+
+                    </div>
+                </div>
+                                <div class="wrapper">
+                    <div class="container">
+                        <h2>Header Two</h2>
+                        <p>What is Lorem Ipsum?
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing software like Aldus PageMaker including
+                            versions of Lorem Ipsum.
+                        </p>
+                        <p>
+                            Why do we use it?
+                            It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                            here', making it look like readable English. Many desktop publishing packages and web page
+                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                            uncover many web sites still in their infancy. Various versions have evolved over the years,
+                            sometimes by accident, sometimes on purpose (injected humour and the like).
+                        </p>
+                        <p>
+                            Where does it come from?
+                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
+                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
+                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
+                            Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the
+                            word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from
+                            sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+                            Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+                            popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+                            amet..", comes from a line in section 1.10.32.
+
+                        </p>
+                        <p>
+                            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
+                            interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
+                            also reproduced in their exact original form, accompanied by English versions from the 1914
+                            translation by H. Rackham.
+                        </p>
+
+
+
+                    </div>
+                </div>
+                                <div class="wrapper">
+                    <div class="container">
+                        <h2>Header Two</h2>
+                        <p>What is Lorem Ipsum?
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing software like Aldus PageMaker including
+                            versions of Lorem Ipsum.
+                        </p>
+                        <p>
+                            Why do we use it?
+                            It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                            here', making it look like readable English. Many desktop publishing packages and web page
+                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                            uncover many web sites still in their infancy. Various versions have evolved over the years,
+                            sometimes by accident, sometimes on purpose (injected humour and the like).
+                        </p>
+                        <p>
+                            Where does it come from?
+                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
+                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
+                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
+                            Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the
+                            word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from
+                            sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+                            Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+                            popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+                            amet..", comes from a line in section 1.10.32.
+
+                        </p>
+                        <p>
+                            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
+                            interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
+                            also reproduced in their exact original form, accompanied by English versions from the 1914
+                            translation by H. Rackham.
+                        </p>
+
+
+
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="container">
+                        <h2>Header Two</h2>
+                        <p>What is Lorem Ipsum?
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing software like Aldus PageMaker including
+                            versions of Lorem Ipsum.
+                        </p>
+                        <p>
+                            Why do we use it?
+                            It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                            here', making it look like readable English. Many desktop publishing packages and web page
+                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                            uncover many web sites still in their infancy. Various versions have evolved over the years,
+                            sometimes by accident, sometimes on purpose (injected humour and the like).
+                        </p>
+                        <p>
+                            Where does it come from?
+                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
+                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
+                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
+                            Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the
+                            word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from
+                            sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+                            Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+                            popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+                            amet..", comes from a line in section 1.10.32.
+
+                        </p>
+                        <p>
+                            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
+                            interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
+                            also reproduced in their exact original form, accompanied by English versions from the 1914
+                            translation by H. Rackham.
+                        </p>
+
+
+
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="container">
+                        <h2>Header Two</h2>
+                        <p>What is Lorem Ipsum?
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing software like Aldus PageMaker including
+                            versions of Lorem Ipsum.
+                        </p>
+                        <p>
+                            Why do we use it?
+                            It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                            here', making it look like readable English. Many desktop publishing packages and web page
+                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                            uncover many web sites still in their infancy. Various versions have evolved over the years,
+                            sometimes by accident, sometimes on purpose (injected humour and the like).
+                        </p>
+                        <p>
+                            Where does it come from?
+                            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
+                            of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
+                            a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
+                            Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the
+                            word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from
+                            sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+                            Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+                            popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+                            amet..", comes from a line in section 1.10.32.
+
+                        </p>
+                        <p>
+                            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
+                            interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
+                            also reproduced in their exact original form, accompanied by English versions from the 1914
+                            translation by H. Rackham.
+                        </p>
+
+
+
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="container">
+                        <h2>Header Two</h2>
+                        <p>THis where the content will go</p>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="container">
+                        <h2>Header Two</h2>
+                        <p>THis where the content will go</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+<footer role="contentinfo" class="">
+        <div class="footer--more-links p-l-100 p-r-100 bg-neutral-1 wrapper"> <!-- Link information -->
+            <div class="container p-0">
+                <div class="footer--social-media flex gap-200 flex-wrap space-between align-center p-b-100 m-b-150 border-bottom">
+                    <div >
+                        <a href="https://www.jcu.edu.au" title="Go to JCU home page">
+                            <img class="jculogo" loading="lazy" src="https://www.jcu.edu.au/__data/assets/file/0006/988872/jcu-logo-footer.svg" alt="JCU logo" />
+                        </a>
+                    </div>
+
+                    <!-- footer social media -->
+                    <section class="">
+                        <span>Follow Us</span>
+                    
+                        <div class="social-media flex">
+                            
+                            <span>
+                                <a href="https://www.facebook.com/jamescookuniversity/" target="_blank" rel="noopener" class="icon p-0 d-block" title="Go to JCU Facebook">
+                                    <span class="sr-only visuallyhidden">JCU Facebook icon</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" class="footer--social-media-icon">
+                                        <path fill="" fill-rule="evenodd" d="M15.746 8.325H14.57c-.923 0-1.102.44-1.102 1.082v1.419h2.2l-.286 2.222h-1.914v5.702h-2.295v-5.702H9.255v-2.222h1.918V9.187c0-1.902 1.162-2.937 2.858-2.937.813 0 1.511.06 1.715.088v1.987zM0 25h25V0H0v25z"/>
+                                    </svg>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="https://www.instagram.com/jamescookuniversity" class="icon p-0 d-block" target="_blank" rel="noopener" title="Go to JCU Instagram">
+                                    <span class="sr-only visuallyhidden">JCU Instagram icon</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" class="footer--social-media-icon">
+                                        <g fill="" fill-rule="evenodd">
+                                            <path d="M17.246 12.514a3.802 3.802 0 0 1-7.605 0c0-.347.047-.683.135-1.003h-1.17v5.436c0 .193.157.35.35.35h8.974a.35.35 0 0 0 .35-.35v-5.436h-1.17c.089.32.136.656.136 1.003M16.211 10.058h1.69a.35.35 0 0 0 .35-.349V8.023a.35.35 0 0 0-.35-.349h-1.69a.35.35 0 0 0-.35.349v1.686a.35.35 0 0 0 .35.349"/>
+                                            <path d="M13.443 14.912a2.401 2.401 0 0 0 2.404-2.398 2.401 2.401 0 0 0-2.404-2.398 2.401 2.401 0 0 0-2.404 2.398 2.401 2.401 0 0 0 2.404 2.398"/>
+                                            <path d="M19.679 17.267c0 .819-.665 1.483-1.486 1.483H8.665c-.82 0-1.486-.664-1.486-1.483V7.732c0-.819.665-1.482 1.486-1.482h9.528c.82 0 1.486.663 1.486 1.482v9.535zM.929 25h25V0h-25v25z"/>
+                                        </g>
+                                    </svg>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="https://twitter.com/jcu" class="icon p-0 d-block" target="_blank" rel="noopener" title="Go to JCU Twitter">
+                                    <span class="sr-only visuallyhidden">JCU Twitter icon</span>
+                                    <svg version="1.1" id="Layer_1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26" height="25" viewBox="0 0 25 25" style="enable-background:new 0 0 25 25;" xml:space="preserve" class="footer--social-media-icon">
+                                            <style type="text/css">
+                                            .st0{fill-rule:evenodd;clip-rule:evenodd;}
+                                            .st1{fill:#53565a;}
+                                            </style>
+                                            <rect x="0.2" y="0.1" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 25.3028 25.1376)" width="25" height="25"></rect>
+                                            <path class="st1" d="M 13.832 11.708 L 19.044 5.65 L 17.808 5.65 L 13.284 10.91 L 9.668 5.65 L 5.5 5.65 L 10.966 13.604 L 5.5 19.958 L 6.735 19.958 L 11.514 14.402 L 15.331 19.958 L 19.5 19.958 L 13.831 11.708 L 13.832 11.708 Z M 12.141 13.674 L 11.586 12.882 L 7.18 6.58 L 9.077 6.58 L 12.633 11.666 L 13.187 12.459 L 17.809 19.07 L 15.912 19.07 L 12.141 13.675 L 12.141 13.674 Z"></path>
+                                    </svg>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="https://www.linkedin.com/school/james-cook-university/" class="icon p-0 d-block" rel="noopener" target="_blank" title="Go to JCU LinkedIn">
+                                    <span class="sr-only visuallyhidden">JCU LinkedIn icon</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" class="footer--social-media-icon">
+                                        <path fill="" fill-rule="evenodd" d="M19.536 18.738h-2.59v-4.053c0-.966-.017-2.21-1.346-2.21-1.348 0-1.553 1.054-1.553 2.141v4.122h-2.588v-8.334h2.483v1.14h.036c.345-.656 1.19-1.347 2.45-1.347 2.623 0 3.108 1.726 3.108 3.97v4.571zM8.539 9.266a1.502 1.502 0 1 1-.002-3.004 1.502 1.502 0 0 1 .002 3.004zm1.295 9.472H7.241v-8.334h2.593v8.334zM.786 25h25V0h-25v25z"/>
+                                    </svg>
+                                </a>
+                            </span>
+                            <span>
+                                <a href="https://www.youtube.com/jamescookuniversity" class="icon p-0 d-block" target="_blank" rel="noopener" title="Go to JCU Youtube">
+                                    <span class="sr-only visuallyhidden">JCU Youtube icon</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" class="footer--social-media-icon">
+                                        <g fill="" fill-rule="evenodd">
+                                            <path d="M11.924 14.121l3.377-1.75-3.378-1.762z"/>
+                                            <path d="M19.464 12.972c0 1.012-.125 2.023-.125 2.023s-.122.861-.497 1.24c-.475.499-1.007.5-1.252.53-1.75.126-4.376.13-4.376.13s-3.25-.03-4.25-.125c-.278-.052-.903-.036-1.378-.534-.375-.38-.497-1.24-.497-1.24s-.125-1.012-.125-2.024v-.949c0-1.011.125-2.022.125-2.022s.122-.862.497-1.242c.475-.497 1.008-.5 1.253-.529 1.749-.126 4.373-.126 4.373-.126h.005s2.624 0 4.373.126c.245.03.777.032 1.252.53.375.38.497 1.24.497 1.24s.125 1.012.125 2.023v.949zM.714 25h25V0h-25v25z"/>
+                                        </g>
+                                    </svg> 
+                                </a>
+                            </span>
+                            <span>
+                                <a href="https://www.tiktok.com/@jamescookuni" class="icon p-0 d-block" target="_blank" rel="noopener" title="Go to JCU TikTok">
+                                    <span class="sr-only visuallyhidden">JCU TikTok</span>
+                                    <svg  version="1.1" id="Layer_1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26" height="25" viewBox="0 0 25 25" style="enable-background:new 0 0 25 25;" xml:space="preserve"class="footer--social-media-icon">
+                                        <style type="text/css">
+                                        .st0{fill-rule:evenodd;clip-rule:evenodd;}
+                                        .st1{fill:#53565a;}
+                                        </style>
+                                        <rect x="0.2" y="0.1" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 25.3028 25.1376)"  width="25" height="25"/>
+                                        <path class="st1" d="M18.3,10.6c-1.1,0-2.2-0.3-3.1-1v4.5c0,2.3-1.8,4.1-4.1,4.1S7,16.4,7,14.1S8.8,10,11.1,10c0.2,0,0.4,0,0.6,0
+                                    v2.3c-1-0.3-2.1,0.2-2.4,1.2s0.2,2.1,1.2,2.4c1,0.3,2.1-0.2,2.4-1.2c0.1-0.2,0.1-0.4,0.1-0.6V5.3h2.2c0,0.2,0,0.4,0,0.6l0,0
+                                    c0.2,0.8,0.7,1.6,1.4,2c0.5,0.3,1.1,0.5,1.7,0.5V10.6z"/>
+                                    </svg>
+                                </a>
+                            </span>
+                        </div>
+                    </section>
+                </div>
+                <!-- footer__links-wrapper -->
+                <section class="footer--links-section grid-12">
+                    <!-- footer links list -->
+                    <section class="contact border-bottom p-b-0 col-12 col-4-med col-2-lrg">
+                        <header class=" p-b-050 p-t-050">
+                            <h3 href="https://www.jcu.edu.au/about-jcu/contact-us" class="footer--link-list--header">Contact</h3>
+                        </header>
+                        <div class=" p-b-100" id="contact-content" role="region">
+                            <ul role="list" class="footer_contact-general list-none p-0 ">
+                                <li><span>Freecall </span><a href="tel:1800246446" class="footer_contact_link">1800 246 446</a></li>
+                                <li><span>Email </span><a href="mailto:enquiries@jcu.edu.au" class="footer_contact_link footer_contact_email"><span>enquiries</span><span>@jcu.edu.au</span></a></li>
+                                <li><span>JCU Townsville </span><a href="tel:+61747814111" class="footer_contact_link" >+61 7 4781 4111</a></li>
+                                <li><span>JCU Cairns </span><a href="tel:+61742341111" class="footer_contact_link" >+61 7 4232 1111</a></li>
+                                <li><span>JCU Brisbane </span><a href="tel:+61730017800" class="footer_contact_link" >+61 7 3001 7800</a></li>
+                                <li><a href="tel:+61747814111" class="footer_contact_link" >All contact options</a></li>
+                                <li><a href="tel:+61742341111" class="footer_contact_link" >Campus locations</a></li>
+                            </ul>   
+                        </div>
+                    </section>
+
+                    <section class="border-bottom about p-b-0 col-12 col-4-med col-2-lrg">
+                        <div class="footer--header p-b-050 p-t-050" role="button" tabindex="0" aria-expanded="false" aria-controls="about-content">
+                            <h3 class="footer--link-list--header plus" id="about-header">About</h3>
+                                                
+                        </div>
+                        <div class="footer--content" id="about-content" role="region" aria-labelledby="about-header">
+                            <ul role="list" class="list-none p-0">
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/reputation-and-experience" class="footer_nav_link">
+                                        Reputation and Experience
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/about-jcu/campuses" class="footer_nav_link">
+                                        Campus Locations
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/careers-at-jcu" class="footer_nav_link">
+                                        Careers at JCU
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/events" class="footer_nav_link">
+                                        JCU Events  
+
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/news" class="footer_nav_link">
+                                        Featured News
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/pay-review" class="footer_nav_link">
+                                        Pay review
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="border-bottom info p-b-0 col-12 col-4-med col-2-lrg">
+                        <div class="footer--header p-b-050 p-t-050" role="button" tabindex="0" aria-expanded="false" aria-controls="info-content">
+                            <h3 class="footer--link-list--header plus" id="info-header">Information for</h3>
+                                                
+                        </div>
+                         <div class="footer--content" id="info-content" role="region" aria-labelledby="info-header">
+                            <ul role="list" class="list-none p-0">
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/students" class="footer_nav_link">
+                                        Current Students
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/future-students" class="footer_nav_link">
+                                        Future Students
+                                    </a>    
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/alumni" class="footer_nav_link">
+                                        Alumni
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/ierc" class="footer_nav_link">
+                                        Indigenous Students
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/international-students" class="footer_nav_link">
+                                        International Students
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/graduate-research-school" class="footer_nav_link">
+                                        Research Students
+
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/staff" class="footer_nav_link">
+                                        Staff
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/news" class="footer_nav_link">
+                                        Media
+                                    </a>
+                                </li>    
+                            </ul>
+                         </div>
+                    </section>
+
+                    <section class="border-bottom colleges p-b-0 col-12 col-4-med col-2-lrg">
+                        <div class="footer--header p-b-050 p-t-050" role="button" tabindex="0" aria-expanded="false" aria-controls="college-content">
+                            <h3 class="footer--link-list--header plus" id="college-header">Colleges</h3>
+                                                
+                        </div>
+                        <div class="footer--content" id="info-content" role="region" aria-labelledby="info-header">
+                            <ul role="list" class="list-none p-0">
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/college-of-arts-society-and-education" class="footer_nav_link">
+                                        Arts, Society and Education
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/college-of-business-law-and-governance" class="footer_nav_link">
+                                        Business, Law and Governance
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/college-of-healthcare-sciences" class="footer_nav_link">
+                                        Healthcare Sciences
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/college-of-medicine-and-dentistry" class="footer_nav_link">
+                                        Medicine and Dentistry
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/college-of-science-and-engineering" class="footer_nav_link">
+                                        Science and Engineering
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="border-bottom divisions p-b-0 col-12 col-4-med col-2-lrg">
+                        <div class="footer--header p-b-050 p-t-050" role="button" tabindex="0" aria-expanded="false" aria-controls="divisions-content">
+                            <h3 class="footer--link-list--header plus" id="divisions-header">Divisions</h3>
+                                                
+                        </div>
+                        <div class="footer--content" id="divisions-content" role="region" aria-labelledby="divisions-header">
+                            <ul role="list" class="list-none p-0">
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/chancellery" class="footer_nav_link">
+                                        Chancellery
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/research-division" class="footer_nav_link">
+                                        Research
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/academy" class="footer_nav_link">
+                                        Academy
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/services-and-resources-division" class="footer_nav_link">
+                                        Services and Resources
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/education-division" class="footer_nav_link">
+                                        Education
+                                    </a>
+                                </li>
+                                <li role="listitem">
+                                    <a href="https://www.jcu.edu.au/ierc" class="footer_nav_link">
+                                        Indigenous Education and Research Centre
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </div>
+            
+        <section class="bg-focus"><!--Aboriginal and Torres Straight Islander Acknowldegement-->
+            <div class="container p-0 footer__acknowledgement">
+                <div class="footer-acknowledgement--flags-wrapper">
+                    <!-- TODO: Add in Indigenous SVG's -->
+                    <div >
+                        <a href="https://www.jcu.edu.au/ierc" title="Go to Indigenous Education and Research Centre">
+                            <img class="footer--flag-image" loading="lazy" src="https://www.jcu.edu.au/__data/assets/image/0008/988865/af.png" alt="Aboriginal Flag" />
+                        </a>
+                    </div>
+                    <div >
+                        <a href="https://www.jcu.edu.au/ierc" title="Go to Indigenous Education and Research Centre">
+                            <img class="footer--flag-image" loading="lazy" src="https://www.jcu.edu.au/__data/assets/image/0008/988883/ti.png" alt="Torres Strait flag" />
+                        </a>
+                    </div>
+                </div>
+                <div class="p-b-250">
+                    <h3>Acknowldegement of Country</h3>
+                    <p class="acknowledgement-text f-display-4">We acknowledge Aboriginal People and Torres Strait Islander People as the first inhabitants of the nation, and acknowledge Traditional Custodians of the Australian lands where our staff and students live, learn and work. Aboriginal and Torres Strait Islander peoples are advised that this site may contain names, images or voices of people who have passed away.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper p-l-100 p-r-100"> <!-- USPS -->
+            <div class="container p-0 footer--legal-information">
+                <div class="footer__universities p-b-200 border-bottom">
+                    <!-- TODO: get better versions of these logos -->
+                    <ul class="footer_university-logos list-none p-l-0 grid-12">
+                        <li class="col-6 col-3-med">
+                            <a  href="https://www.jcu.edu.au/gender-equity-at-jcu/gender-equity" title="Athena SWAN Bronze Award">
+                                <img class="footer--logo-image" loading="lazy" src="https://www.jcu.edu.au/__data/assets/image/0006/1909239/jcu-bronze-award2-1.png" alt="Athena SWAN Bronze Award logo" />
+                            </a>
+                        <li class="col-6 col-3-med">
+                            <a href="http://www.iru.edu.au/" title="Innovative Research Universities">
+                                <img  class="footer--logo-image" style="margin-top:4px" loading="lazy" src="https://www.jcu.edu.au/__data/assets/image/0004/988870/iru.png" alt="Innovative Research Universities logo" />
+                            </a>
+                        </li>
+                        <li class="col-6 col-3-med">
+                            <a href="https://www.universitiesaustralia.edu.au/" title="Universities Australia">
+                                <img  class="footer--logo-image" loading="lazy" src="https://www.jcu.edu.au/__data/assets/image/0009/988884/ua.png" alt="Universities Australia logo" />
+                            </a>
+                        </li>
+                        <li class="col-6 col-3-med">
+                            <a href="https://www.jcu.edu.au/state-of-the-tropics" title="State of the tropics">
+                                <img  class="footer--logo-image" loading="lazy" src="https://www.jcu.edu.au/__data/assets/image/0007/988882/st.png" alt="State of the Tropics logo" />
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </div>
+                <section class="footer__business f-primary-dark">
+                    <div class="jcu__footer-disclaimer p-b-100">
+                        <ul class="disclaimer-links list-none flex align-center flex-wrap">
+                            <li><a class="p-r-025" href="https://www.jcu.edu.au/copyright-and-terms-of-use" >Terms of use</a></li>
+                            <li><a class="p-r-025 p-l-025" href="https://www.jcu.edu.au/right-to-information-and-privacy" >Privacy</a></li>
+                            <li><a class="p-r-025 p-l-025" href="https://www.jcu.edu.au/copyright-and-terms-of-use" >Disclaimer</a></li>
+                            <li><a class="p-r-025 p-l-025" href="https://www.jcu.edu.au/feedback">Feedback</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="jcu__footer-copyright">
+                        <ul class="disclaimer-links column-gap list-none flex align-center flex-wrap">
+                            <li><span class="">TEQSA Provider ID: PRV12077</span></li>
+                            <li><span class=""><a class="" href="http://cricos.education.gov.au/Institution/InstitutionDetails.aspx?ProviderID=117">CRICOS Provider Code 00117J</a></span></li>
+                            <li><span class="">ABN 46253211955</span></li>
+                            <li><span class="">&copy; James Cook University 1995 to 2025</span></li>
+                        </ul>
+                    </div>
+
+            
+                </section>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>

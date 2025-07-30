@@ -1,0 +1,153 @@
+// All global button classes
+// Default button class
+// Specialized button class
+
+// Import variables
+@use '../variables.scss' as variables;
+@use 'sass:map';
+@use 'sass:color';
+
+// Base button style settings to be used for buttons
+@mixin button-style($background-colour,
+    $font-colour,
+    $padding,
+    $border,
+    $font-weight) {
+    background-color: $background-colour;
+    color: $font-colour;
+    padding: $padding;
+    border: $border;
+    font-weight: $font-weight;
+    width: fit-content;
+    display: block;
+
+
+    &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    &:focus {
+        outline: 2px map.get(variables.$colours, focus) solid;
+    }
+}
+
+// Colour mixin to auto create hover effect
+@mixin button-colour($class-name,
+    $colour,
+    $mix-value,
+    $font-colour: variables.$color-primary-light,
+    $border-colour: inherit) {
+    &.#{$class-name} {
+        background-color: $colour;
+        color: $font-colour;
+        border-color: $border-colour;
+    }
+
+    &.#{$class-name}:hover {
+        background-color: color.mix(#000000, $colour, $mix-value);
+    }
+}
+
+// Default button style
+button,
+.btn,
+.btn:link {
+    @include button-style(map.get(variables.$colours, ocean-3),
+        variables.$color-primary-light,
+        map.get(variables.$spacing, "100"),
+        1px solid #fff,
+        variables.$font-medium );
+}
+
+// Hover styling colour for default
+button:hover,
+.btn:hover {
+    background-color: #00478f;
+}
+
+// Extra button styling
+button,
+.btn {
+
+    // Sizing
+    &.lrg {
+        padding: 1.5rem map.get(variables.$spacing, "200");
+        font-size: variables.$font-lead;
+    }
+
+    // Colours
+    @include button-colour('secondary-one',
+        map.get(variables.$colours, 'sand-2'),
+        5%,
+        $font-colour: variables.$color-primary-dark,
+        $border-colour: map.get(variables.$colours, neutral-1));
+
+    @include button-colour('secondary-two',
+        map.get(variables.$colours, sand-3),
+        5%,
+        $font-colour: variables.$color-primary-dark,
+        $border-colour: map.get(variables.$colours, sand-3));    
+
+    //button for 'l4c' section    
+    @include button-colour('nav-button', 
+        variables.$color-primary-light, 
+        10%,
+        $font-colour: map.get(variables.$colours, neutral-1),
+        $border-colour: transparent transparent map.get(variables.$colours, neutral-1) transparent);
+
+    @include button-colour('special-one',
+        map.get(variables.$colours, focus),
+        6%);
+        
+    @include button-colour('special-two', #023264, 33%);
+
+    // Clear bg
+    @include button-colour('clear', #ffffff00, 5%);
+
+    // borders
+    &.border-none {
+        border: none;
+    }
+}
+
+//some extra styling for 'l4c' section button
+.nav-button {
+    display: flex;
+    width: 100%;
+    border: 1px solid;
+    border-color: transparent transparent #53565a transparent;
+}
+
+//desktop styling for 'l4c' section button
+@media (width > variables.$mobile-breakpoint) { 
+
+    .nav-button {
+        background-color: map.get(variables.$colours, "beige");
+        width: 100%;
+
+        &[aria-expanded="true"] {
+            border-bottom: 0;
+        }
+    }
+}
+
+//desktop styling for 'l4c' section button
+@media (width > variables.$mobile-breakpoint) {
+    .nav-button[aria-expanded="true"] {
+        border-bottom: 0;
+    }
+}
+
+// Remove styling on button
+.btn-no-style {
+    background-color: inherit;
+    color: inherit;
+    padding: 0;
+    font-weight: inherit;
+    border: none;
+}
+
+.btn-no-style:hover {
+    background-color: inherit;
+}

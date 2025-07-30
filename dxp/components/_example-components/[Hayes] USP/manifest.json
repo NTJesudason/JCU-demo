@@ -1,0 +1,123 @@
+{
+    "$schema": "http://localhost:3000/schemas/v1.json",
+    "name": "hayes-usp",
+    "namespace": "hayes-usp-db",
+    "displayName": "[Hayes] USP",
+    "description": "Unique Selling point display (3 link cards no images), to be used to display short, direct text with a link. Can also be used to link towards pages as a nav menu.",
+    "version": "0.0.10",
+    "mainFunction": "main",
+    "type": "edge",
+    "icon": {
+        "id": "fiber_new",
+        "color": {
+            "type": "enum",
+            "value": "blue"
+        }
+    },
+    "functions": [
+        {
+            "name": "main",
+            "entry": "main.cjs",
+            "input": {
+                "type": "object",
+                "properties": {
+                    "backgroundColour": {
+                        "type": "string",
+                        "title": "Background colour",
+                        "description": "Sets the background colour from the wrapper level",
+                        "oneOf": [
+                            {"enum": ["jcu-v1__bg-color__white"], "title": "White"},
+                            {"enum": ["jcu-v1__bg-color__sand-2"], "title": "sand-2"},
+                            {"enum": ["jcu-v1__bg-color__darkblue"], "title": "Dark Blue"}
+                        ],
+                        "default": "jcu-v1__bg-color__white"
+                    },
+                    "headerText": {
+                        "type": "string",
+                        "title": "Header text",
+                        "description": "Sets the components header on page"
+                    },
+                    "usp": {
+                        "type": "array",
+                        "title": "USP Cards",
+                        "description": "Each entry is a card, minimum of 2 maximum of 3.",
+                        "minItems": 2,
+                        "maxItems": 3,
+                        "items": {
+                            "type": "object",
+                            "title": "USP Card",
+                            "required": [
+                                
+                            ],
+                            "properties": {
+                                "link": {
+                                    "type": "SquizLink",
+                                    "title": "Title and link",
+                                    "description": "Enter the title and the link into this item."
+                                },
+                                "borderColour": {
+                                    "type":  "string",
+                                    "title": "Border colour",
+                                    "description": "Border colour to be used on the left edge of the card.",
+                                    "oneOf": [
+                                        {"enum": ["jcu-v1__border-color__sand-2"], "title": "sand-2"},
+                                        {"enum": ["jcu-v1__border-color__celeste"], "title": "Celeste"},
+                                        {"enum": ["jcu-v1__border-color__darkgrey"], "title": "Dark Grey"},
+                                        {"enum": ["jcu-v1__border-color__burghandy"], "title": "Burghandy"},
+                                        {"enum": ["jcu-v1__border-color__blue"], "title": "Blue"},
+                                        {"enum": ["jcu-v1__border-color__green"], "title": "Green"},
+                                        {"enum": ["jcu-v1__border-color__gold"], "title": "Gold"},
+                                        {"enum": ["jcu-v1__border-color_aquagreen"], "title": "Aqua Green"},
+                                        {"enum": ["jcu-v1__border-color__purple"], "title": "Purple"},
+                                        {"enum": ["jcu-v1__border-color__darkblue"], "title": "Dark Blue"},
+                                        {"enum": ["jcu-v1__border-color__orange"], "title": "Orange"},
+                                        {"enum": ["jcu-v1__border-color__lightblue"], "title": "Light Blue"}
+                                    ],
+                                    "default": "jcu-v1__border-color__blue"
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": []
+            },
+            "output": {
+                "responseType": "html",
+                "staticFiles": [
+                    {
+                        "location": "header",
+                        "file": {
+                            "type": "css",
+                            "filepath": "default.css"
+                        }
+                    },
+                    {
+                        "location": "footer",
+                        "file": {
+                            "type": "js",
+                            "filepath": "default.js"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "previews": {
+        "default": {
+            "functionData": {
+                "main": {
+                    "inputData": {
+                        "type": "file",
+                        "path": "previews/example.data.json"
+                    },
+                    "wrapper": {
+                        "path": "previews/preview-wrapper-hayes.html"
+                    }
+                }
+            }
+        }
+    },
+    "staticFiles": {
+        "locationRoot": "static"
+    }
+}

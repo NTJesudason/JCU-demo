@@ -1,0 +1,108 @@
+{
+    "$schema": "http://localhost:3000/schemas/v1.json",
+    "name": "hayes-image-slider",
+    "namespace": "hayes-image-slider-db",
+    "displayName": "[Hayes] Image Slider",
+    "description": "Image banner slider, descriptions can be added to them as well. Can also be used as a header. Contains a CTA",
+    "version": "0.0.40",
+    "mainFunction": "main",
+    "type": "edge",
+    "icon": {
+        "id": "fiber_new",
+        "color": {
+            "type": "enum",
+            "value": "blue"
+        }
+    },
+    "functions": [
+        {
+            "name": "main",
+            "entry": "main.cjs",
+            "input": {
+                "type": "object",
+                "properties": {
+                    "isTopBanner": {
+                        "type": "boolean",
+                        "title": "Is this being used as the top banner?",
+                        "description": "If set to true, displays H1 of page name.",
+                        "default": false
+                    },
+                    "bannerContent": {
+                        "type": "array",
+                        "title": "Banner Content",
+                        "description": "Array for each banners content.",
+                        "minItems": 1,
+                        "maxItems": 5,
+                        "items": {
+                            "type": "object",
+                            "title": "Banner",
+                            "required": [],
+                            "properties": {
+                                "image": {
+                                    "type": "SquizImage",
+                                    "title": "Image",
+                                    "description": "Banner image."
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "title": "Title",
+                                    "description": "Banner title.",
+                                    "maxLength": 100
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "title": "Description",
+                                    "description": "Banner description to sit under title.",
+                                    "maxLength": 350
+                                },
+                                "ctaButton": {
+                                    "type": "SquizLink",
+                                    "title": "CTA Button link and title",
+                                    "description": "CTA button link and title to sit under the description"
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": []
+            },
+            "output": {
+                "responseType": "html",
+                "staticFiles": [
+                    {
+                        "location": "header",
+                        "file": {
+                            "type": "css",
+                            "filepath": "default.css"
+                        }
+                    },
+                    {
+                        "location": "footer",
+                        "file": {
+                            "type": "js",
+                            "filepath": "default.js"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "previews": {
+        "default": {
+            "functionData": {
+                "main": {
+                    "inputData": {
+                        "type": "file",
+                        "path": "previews/example.data.json"
+                    },
+                    "wrapper": {
+                        "path": "previews/preview-wrapper-hayes.html"
+                    }
+                }
+            }
+        }
+    },
+    "staticFiles": {
+        "locationRoot": "static"
+    }
+}

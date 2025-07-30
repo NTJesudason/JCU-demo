@@ -1,0 +1,24 @@
+// Global files
+@use './variables.scss';
+@use './global/typography.scss';
+@use './global/blocks.scss';
+@use './global/grid.scss';
+@use './global/columns.scss';
+@use './global/button.scss';
+@use './global/utilities.scss';
+@use './global/images.scss';
+@use './global/tables.scss';
+@use './global/icons.scss';
+@use './global/colors.scss';
+@use './global/hover.scss';
+@use './global/spacing.scss';
+
+//section files
+@use './sections/footer.scss';
+@use './sections/header.scss';
+@use './sections/body.scss';
+
+// Component files
+@use '../../dxp/components/multi-column/multi-column.scss';
+@use './components/article-grid.scss';
+

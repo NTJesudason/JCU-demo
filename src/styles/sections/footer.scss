@@ -1,0 +1,201 @@
+
+@use '../variables.scss' as variables;
+@use 'sass:map';
+@use 'sass:color';
+
+footer {
+    
+    text-decoration: none;
+    font-size: variables.$font-caption;
+
+    .jculogo {
+        width: 125px;
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+
+
+    .social-media a.icon {
+        height: 26px;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    svg.footer--social-media-icon {
+        fill: map.get(variables.$colours, "white");
+
+        &:hover {
+            fill: map.get(variables.$colours, focus);;
+        }
+    }
+
+    .social-media {
+        display: -ms-flexbox;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        margin-right: auto;
+        width: auto;
+
+        & span {
+            padding: .3rem 4px;
+        }
+    }
+
+    .footer--more-links {
+        color: variables.$color-primary-light;
+
+        & .border-bottom {
+            border-bottom: 1px solid map.get(variables.$colours, "white");
+            margin: 0;
+        }
+
+        & a, a:link {
+            color: variables.$color-primary-light;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+    } 
+
+    .footer--link-list--header {
+        font-weight: 700;
+        font-size: variables.$font-caption;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    li {
+        padding-bottom: map.get(variables.$spacing, "0125");
+    }
+
+    header {
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .footer--content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease-out;
+    }
+
+    .footer--content.active {
+        max-height: 400px;
+        padding: 1rem 0;
+        /* Use different timing for opening */
+        transition: max-height 0.8s cubic-bezier(0.4, 0, 0.2, 1), padding 0.2s ease-out;
+    }
+
+    .footer--flag-image {
+        height:56px;
+        width:auto;
+    }
+
+    .footer--logo-image {
+        height:100%;
+        width:auto;
+    }
+
+    .jcu__footer-disclaimer ul {
+        justify-content: flex-start;
+
+        & li:before {
+            content: "|";
+        }
+
+        & li:first-child:before {
+            content: "";    
+        }
+
+        & a {
+            font-weight: 700;
+        }
+
+    }
+
+    .footer--links-section {
+            gap: 0;
+    }
+
+    .footer__acknowledgement {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 2rem 1rem;
+    }
+
+    .acknowledgement-text {
+        font-size: 1rem;
+    }
+
+    .footer-acknowledgement--flags-wrapper {
+        display: flex;
+        gap: 1rem;
+
+    }
+
+}
+
+@media screen and (min-width: variables.$mobile-breakpoint) {
+    
+    footer {
+        .footer--content {
+            overflow: visible;
+            max-height: none;
+        }
+
+        .footer--more-links .footer--links-section .border-bottom {
+            border-bottom: transparent;
+        }
+
+        .footer--links-section {
+            gap: 1rem;
+        }
+
+        .footer__acknowledgement {
+            flex-direction: row-reverse;
+            align-items: center;
+            gap: 3rem;
+            
+        }
+    }
+
+}
+
+@media screen and (min-width: variables.$tablet-breakpoint) {
+    footer {
+        .footer--links-section {
+            grid-template-columns: repeat(10, 1fr);
+        }
+    }
+}
+
+@media screen and (min-width: variables.$desktop-breakpoint) {
+
+    .footer--legal-information {
+        display: flex;
+        gap: 1rem;
+
+        .footer__universities, footer__business {
+            width: 50%;
+        }
+
+        .disclaimer-links {
+            justify-content: flex-end;
+        }
+    }
+
+    .footer__universities.border-bottom {
+        border-bottom: transparent;
+    }
+
+}

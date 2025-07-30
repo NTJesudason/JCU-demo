@@ -1,0 +1,18 @@
+/* Client Side CSS goes here */
+.hayes-introduction-text-container {
+    font-size: 1.25rem;
+    color: #53565a;
+}
+
+.hayes-introduction-text-container a {
+    color: #06c;
+    text-decoration: none;
+}
+
+.hayes-introduction-text-container a:hover {
+    text-decoration: underline
+}
+
+.hayes-introduction-text-container a:focus {
+    outline: 2px solid #e3a800;
+}

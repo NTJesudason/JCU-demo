@@ -1,0 +1,302 @@
+// All base styling for text
+// Apply to p, summary, etc etc.
+// Colours, font-size, font-type etc
+
+// Import variables
+@use '../variables.scss' as variables;
+@use 'sass:map';
+
+// Base text styling
+@mixin text-style($line-height, $colour, $font-weight, $font-family) {
+    line-height: $line-height;
+    color: $colour;
+    font-weight: $font-weight;
+    font-family: $font-family;
+    margin: 0 0 map.get(variables.$spacing, "100");
+}
+
+// Set standard font styling
+body {
+    line-height: variables.$line-height-base;
+    color: variables.$color-primary-dark;
+    font-weight: variables.$font-normal;
+    font-family: variables.$font-main;
+    font-size: variables.$font-size-base;
+}
+
+// Set text styling to inherit from body or parent
+p,
+summary,
+button,
+ul,
+ol {
+    @include text-style(inherit, inherit, inherit, inherit);
+    font-size: inherit;
+}
+
+// Make ol numbers bold
+ol li::marker {
+    font-weight: variables.$font-bold;
+}
+
+// Make ol numbers not bold
+.ol-regular li::marker {
+    font-weight: variables.$font-normal;
+}
+
+// Make li align marker align with left edge
+.list-left {
+    list-style-position: inside;
+    padding: 0;
+}
+
+//Make li with no list appearance
+.list-none {
+    list-style: none;
+    padding-left: 0;
+}
+
+// Link styling
+a,
+a:link {
+    @include text-style(variables.$line-height-base,
+        variables.$link-primary,
+        variables.$font-normal,
+        variables.$font-main);
+    text-decoration: none;
+}
+
+a:visited {
+    color: variables.$link-primary-visited;
+}
+
+a:hover,
+a:active {
+    text-decoration: underline;
+    cursor: pointer;
+    color: variables.$link-primary-hover;
+}
+
+a:focus {
+    outline: 1px map.get(variables.$colours, focus) solid;
+}
+
+// Headers styling
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @include text-style(variables.$line-height-headers, inherit, variables.$font-bold, variables.$font-main);
+}
+
+h1 {
+    font-family: variables.$font-alt;
+    font-size: map.get(variables.$font-size-headers, h1);
+}
+
+.f-display-1 {
+    font-size: map.get(variables.$font-size-headers, h1);
+    line-height: variables.$line-height-headers;
+}
+
+@media (width <=variables.$tablet-breakpoint) {
+
+    h1,
+    .f-display-1 {
+        font-size: map.get(variables.$font-size-headers, h1-alt);
+    }
+}
+
+// Set header && display sizing 
+$header-types: 2, 3, 4, 5, 6;
+
+@each $i in $header-types {
+
+    h#{$i},
+    .f-display-#{$i} {
+        font-size: map.get(variables.$font-size-headers, h#{$i});
+        line-height: variables.$line-height-headers;
+    }
+}
+h5 {
+    font-weight: variables.$font-semibold;
+}
+
+h6 {
+    font-weight: variables.$font-bold;
+}
+
+// Special font sizes
+.f-special-1 {
+    font-size: variables.pxToRem(40);
+}
+
+@media (width <=variables.$mobile-breakpoint) {
+    .f-special-1 {
+        font-size: variables.pxToRem(30);
+    }
+}
+
+// Extra elements - Inline elements - Font utilities
+.f-primary-dark,
+.f-primary-dark a,
+.f-primary-dark:link,
+.f-primary-dark:active,
+.f-primary-dark:visited {
+    color: variables.$color-primary-dark;
+}
+
+// Primary light font colour with links as well
+.f-primary-light,
+.f-primary-light a,
+.f-primary-light:link,
+.f-primary-light a:active {
+    color: variables.$color-primary-light;
+}
+
+// Underline links to differentiate them
+.f-primary-light a,
+.f-primary-light a:link,
+.f-primary-light a:active,
+.f-primary-dark a,
+.f-primary-dark a:link,
+.f-primary-dark a:active,
+.f-primary-dark a:visited {
+    text-decoration: underline;
+} 
+
+.f-primary-light a:visited {
+    color: variables.$link-secondary-visited;
+}
+
+.f-primary-light a:hover {
+    text-decoration: none;
+}
+
+.f-uppercase {
+    text-transform: uppercase;
+}
+
+.f-regular {
+    font-weight: variables.$font-normal;
+}
+
+.f-medium {
+    font-weight: variables.$font-medium;
+}
+
+.f-semibold {
+    font-weight: variables.$font-semibold;
+}
+
+.f-bold {
+    font-weight: variables.$font-bold;
+}
+
+.f-black {
+    font-weight: variables.$font-black;
+}
+
+.f-primary {
+    font-family: variables.$font-main;
+}
+
+.f-secondary {
+    font-family: variables.$font-alt;
+}
+
+.f-small {
+    font-size: variables.$font-small;
+}
+
+.f-caption {
+    font-size: variables.$font-caption;
+}
+
+.f-lead {
+    font-size: variables.$font-lead;
+}
+
+.f-overline {
+    font-size: variables.$font-overline;
+    font-weight: variables.$font-semibold;
+}
+
+@mixin subtitle($font-size, $font-weight) {
+    font-size: $font-size;
+    font-weight: $font-weight;
+}
+
+.f-subtitle-1 {
+    @include subtitle(variables.$font-lead, variables.$font-bold);
+}
+
+.f-subtitle-2 {
+    @include subtitle(variables.$font-size-base, variables.$font-normal);
+}
+
+.f-subtitle-3 {
+    @include subtitle(variables.$font-small, variables.$font-normal);
+    font-style: italic;
+}
+
+.f-center {
+    text-align: center;
+}
+
+blockquote,
+blockquote * {
+    @include text-style(variables.$line-height-base,
+        variables.$color-primary-dark,
+        variables.$font-semibold,
+        variables.$font-main);
+}
+
+blockquote {
+    padding: map.get(variables.$spacing, "100");
+}
+
+blockquote::before {
+    display: block;
+    font-size: map.get(variables.$font-size-headers, h1);
+    font-family: variables.$font-alt;
+    height: 3rem;
+    content: '“';
+}
+
+blockquote *:first-child {
+    font-size: variables.$font-lead;
+}
+
+blockquote *:not(:first-child) {
+    margin-bottom: 0;
+}
+
+blockquote :nth-child(2)::before {
+    content: "\2015 \00A0";
+}
+
+blockquote *:not(:first-child):not(:nth-child(2)) {
+    font-weight: variables.$font-normal;
+}
+
+// Changes colour of text in component to white
+.wrapper.bg-ocean-3 {
+    color: variables.$color-primary-light;
+
+    // make HR white
+    & hr {
+        background-color: variables.$color-primary-light;
+    }
+
+    & a,
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+        color: variables.$color-primary-light;
+        text-decoration: underline;
+    }
+}

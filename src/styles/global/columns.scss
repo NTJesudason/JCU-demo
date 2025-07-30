@@ -1,0 +1,55 @@
+// Columns for default layouts
+// Columns use flex
+@use '../variables.scss' as variables;
+@use 'sass:math';
+@use 'sass:map';
+
+@mixin columns() {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin-bottom: map.get(variables.$spacing, "100");
+}
+
+.columns {
+    @include columns();
+    gap: map.get(variables.$spacing, "100");
+
+    &.nogap{
+        gap: 0;
+    }
+}
+
+@media (width >=variables.$tablet-breakpoint) {
+    .columns {
+        gap: map.get(variables.$spacing, "200");
+    }
+}
+
+$columns: 12;
+.columns {
+    @for $i from 1 through $columns {
+        // Mobile sizing
+        .col-#{$i} {
+            flex: 1 0 calc((100% - (map.get(variables.$spacing, "100") * ($columns - 1))) * ($i / $columns))
+        }
+    }
+
+    // laptop sizing
+    @media (width >=variables.$mobile-breakpoint) {
+        @for $i from 1 through $columns {
+            .col-#{$i}-med {
+                flex: 1 0 calc((100% - (map.get(variables.$spacing, "100") * ($columns - 1))) * ($i / $columns))
+            }
+        }
+    }
+
+    // Desktop sizing
+    @media (width >=variables.$tablet-breakpoint) {
+        @for $i from 1 through $columns {
+            .col-#{$i}-lrg {
+                flex: 1 0 calc((100% - (map.get(variables.$spacing, "100") * ($columns - 1))) * ($i / $columns))
+            }
+        }
+    } 
+}

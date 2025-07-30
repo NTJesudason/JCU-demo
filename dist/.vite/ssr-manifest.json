@@ -1,0 +1,14 @@
+{
+  "dxp/component-service/banner/js/frontend.js": [],
+  "dxp/component-service/testimonials/js/frontend.js": [],
+  "dxp/components/multi-column/multi-column.js": [],
+  "src/entry-server.js": [],
+  "src/scripts/_global-component-js/overflow-drag-scroll.js": [],
+  "src/scripts/_global-component-js/overflow-scrollwheel-scroll.js": [],
+  "src/scripts/common/footer.js": [],
+  "src/scripts/common/header.js": [],
+  "src/scripts/common/side-navigation.js": [],
+  "src/scripts/globals.js": [],
+  "src/scripts/main.js": [],
+  "src/styles/main.scss": []
+}

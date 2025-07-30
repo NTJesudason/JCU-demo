@@ -1,0 +1,37 @@
+{
+    "backgroundColour": "bg-sand-2",
+    "headerText": "Test header",
+    "paddingTop": "default",
+    "paddingBottom": "default",
+    "items": [
+        {
+            "items": {
+                "link": {
+                    "text": "Science",
+                    "url": "https://www.jcu.edu.au/courses/study/science"
+                },
+                "borderColour": "border-left-ocean-3"
+            }
+        },
+        {
+            "items": {
+                "link": {
+                    "text": "Information Technology",
+                    "url": "https://www.jcu.edu.au/courses/study/information-technology"
+                },
+                "description": "Information technology descxription",
+                "borderColour": "border-left-theme-1"
+            }
+        },
+        {
+            "items": {
+                "link": {
+                    "text": "Engineering",
+                    "url": "https://www.jcu.edu.au/courses/study/engineering"
+                },
+                "description": "lorem ipsum",
+                "borderColour": "border-left-theme-3"
+            }
+        }
+    ]
+}

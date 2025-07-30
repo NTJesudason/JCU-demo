@@ -1,0 +1,21 @@
+// Import variables
+@use '../variables.scss' as variables;
+
+// Import hover mixin
+@use '../global/hover.scss' as hover;
+
+// Makes title have hover effect when any part of article is hovered
+.article-hover:hover h3,
+.article-hover:hover .fl-n span {
+    @include hover.defaultHover;
+}
+
+// Remove float right from arrow
+.fl-n::after {
+    float: none;
+    display: inline-block;
+}
+
+.article-hover:hover .fl-n::after {
+    text-decoration: none;
+}

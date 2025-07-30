@@ -1,0 +1,114 @@
+
+// Import variables
+@use '../variables.scss' as variables;
+@use 'sass:map';
+@use 'sass:color';
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Open Sans", sans-serif;
+    overflow-x: visible;
+    margin-bottom: 5.875rem;
+}
+
+#body--content-outer-wrapper {
+    flex-direction: column;
+}
+
+//remove default component padding on two column pages
+#body--content-outer-wrapper.container .container {
+    padding: 0;
+}
+
+@media screen and (min-width: variables.$mobile-breakpoint) {
+    .page-wrapper {
+        margin-bottom: 0;
+    }
+
+    #body--content-outer-wrapper {
+        flex-direction: row-reverse;
+        gap: map.get(variables.$spacing, "400");
+    }
+}
+
+#nav--outside-wrapper {
+    min-width: 100%;
+
+}
+
+// first button on inside navigation gets a top border
+ul.p-l--none > li:first-child > button.nav-button {
+    border-color: map.get(variables.$colours, neutral-1) transparent;
+}
+
+.nav--section-content a {
+    color: map.get(variables.$colours, neutral-1);
+    margin-bottom: 0;
+
+    &.border-left {
+        padding: .25rem 0 .25rem 1rem;      
+    }
+
+    &:hover, &:focus {
+        border-left: solid 5px map.get(variables.$colours, focus);
+    }
+}
+#nav--link-wrapper a  {
+            color: #53565a;
+        }
+
+.breadcrumbs li + li::before {
+    content: "/";
+    margin: 0 0.5em;
+}
+
+@media (width >=variables.$mobile-breakpoint) {
+
+    #nav--link-wrapper {
+        border-top-width: 5px;
+        border-top-style: solid;
+        color: #53565a;
+        height: fit-content;
+        background-color: map.get(variables.$colours, sand-2);
+        margin-bottom: 0;
+        padding: 1rem;
+    }
+
+    #nav--outside-wrapper {
+        min-width: 25%;
+    }
+
+    #body--content-inner-wrapper {
+        flex-grow: 2;
+    }
+
+    #nav--top-heading {
+        pointer-events: none;
+        cursor: default;
+
+        &:hover, &:focus {
+            text-decoration: none;
+            cursor: default;
+            background-color: #f9f9f9;
+            outline: none;
+        }
+    }
+
+    //css for grey nav slide animation
+    .nav--link-text {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    a:hover .nav--link-text {
+        transform: translateX(0.5rem);
+        color: variables.$link-primary-hover;
+    }
+
+    section.nav--section-content ul > li:first-child {
+        padding-top:  map.get(variables.$spacing, "050"); 
+    }
+}
+

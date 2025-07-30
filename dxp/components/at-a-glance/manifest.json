@@ -1,0 +1,137 @@
+{
+    "$schema": "http://localhost:3000/schemas/v1.json",
+    "name": "at-a-glance",
+    "namespace": "at-a-glance-db",
+    "displayName": "At a glance",
+    "description": "At a glance component display information at a glance. Used for displaying statistics etc. Primary use on level 1 pages with 3 examples, can be used on L4C with 4 examples.",
+    "version": "0.0.1",
+    "mainFunction": "main",
+    "type": "edge",
+    "icon": {
+        "id": "fiber_new",
+        "color": {
+            "type": "enum",
+            "value": "blue"
+        }
+    },
+    "functions": [
+        {
+            "name": "main",
+            "entry": "main.cjs",
+            "input": {
+                "type": "object",
+                "properties": {
+                    "uniqueID": {
+                        "type": "string",
+                        "title": "Unique ID",
+                        "description": "Unique ID to be set on the wrapper level."
+                    },
+                    "paddingTop": {
+                        "type": "string",
+                        "title": "Space above",
+                        "description": "Padding size above wrapper.",
+                        "oneOf": [
+                            {"enum": ["default"], "title": "Default"},
+                            {"enum": ["p-t-0"], "title": "none"}
+                        ],
+                        "default": "default"
+                    },
+                    "paddingBottom": {
+                        "type": "string",
+                        "title": "Space above",
+                        "description": "Padding size above wrapper.",
+                        "oneOf": [
+                            {"enum": ["default"], "title": "Default"},
+                            {"enum": ["p-b-0"], "title": "none"}
+                        ],
+                        "default": "default"
+                    },
+                    "backgroundColour": {
+                        "type": "string",
+                        "title": "Background colour",
+                        "description": "Sets the background colour from the wrapper level",
+                        "oneOf": [
+                            {"enum": ["bg-white"], "title": "White"},
+                            {"enum": ["bg-sand-2"], "title": "sand-2"},
+                            {"enum": ["bg-ocean-3"], "title": "Mid Blue"}
+                        ],
+                        "default": "bg-sand-2"
+                    },
+                    "headerText": {
+                        "type": "string",
+                        "title": "Header text",
+                        "description": "Sets the components header on page"
+                    },
+                    "centerHeader": {
+                        "type": "boolean",
+                        "title": "Center the header?",
+                        "description": "Centers the top level header.",
+                        "default": false
+                    },
+                    "scrollOverflow": {
+                        "type": "boolean",
+                        "title": "Scroll on overflow?",
+                        "description": "Sets component to scroll horizontally instead of stack.",
+                        "default": true
+                    },
+                    "stats": {
+                        "type": "array",
+                        "title": "Statistics",
+                        "description": "Each entry is a stat, minimum of 2 maximum of 4.",
+                        "minItems": 2,
+                        "maxItems": 4,
+                        "items": {
+                            "type": "object",
+                            "title": "Stat",
+                            "required": [
+
+                            ],
+                            "properties": {
+                                "title": {
+                                    "type": "string",
+                                    "title": "Title",
+                                    "description": "Stat title, 'at a glace' information."
+                                },
+                                "subTitle": {
+                                    "type": "string",
+                                    "title": "Sub title",
+                                    "description": "Sits underneath the title, more descriptive but smaller text."
+                                }
+                            }
+                        }
+                    },
+                    "references": {
+                        "type": "string",
+                        "title": "References",
+                        "description": "Sits at the bottom of the component, reference point for the stats."
+                    }
+                },
+                "required": [
+                    "paddingTop",
+                    "paddingBottom",
+                    "backgroundColour",
+                    "centerHeader",
+                    "scrollOverflow"
+                ]
+            },
+            "output": {
+                "responseType": "html"
+            }
+        }
+    ],
+    "previews": {
+        "default": {
+            "functionData": {
+                "main": {
+                    "inputData": {
+                        "type": "file",
+                        "path": "previews/example.data.json"
+                    },
+                    "wrapper": {
+                        "path": "previews/preview.html"
+                    }
+                }
+            }
+        }
+    }
+}

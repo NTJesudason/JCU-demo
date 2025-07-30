@@ -1,0 +1,107 @@
+// Spacing classes
+// Margin, padding, gap
+
+@use '../variables.scss' as variables;
+
+// Create spacing classes
+@each $key, $value in variables.$spacing {
+
+    // Gap classes
+    .gap-#{$key} {
+        gap: $value;
+    }
+
+    .gap-#{$key}-row {
+        row-gap: $value;
+    }
+
+    .gap-#{$key}-column {
+        column-gap: $value;
+    }
+
+    // !important to override :last-child if needed
+    .m-#{$key} {
+        margin: $value !important;
+    }
+
+    .m-t-#{$key} {
+        margin-top: $value !important;
+    }
+
+    .m-b-#{$key} {
+        margin-bottom: $value !important;
+    }
+
+    .m-r-#{$key} {
+        margin-right: $value !important;
+    }
+
+    .m-l-#{$key} {
+        margin-left: $value !important;
+    }
+
+    .p-#{$key} {
+        padding: $value;
+    }
+
+    .p-t-#{$key} {
+        padding-top: $value;
+    }
+
+    .p-b-#{$key} {
+        padding-bottom: $value;
+    }
+
+    .p-r-#{$key} {
+        padding-right: $value;
+    }
+
+    .p-l-#{$key} {
+        padding-left: $value;
+    }
+}
+
+// Create spacing classes for medium size screen
+@media (width >=variables.$mobile-breakpoint) {
+    @each $key, $value in variables.$spacing {
+        .m-#{$key}-med {
+            margin: $value !important;
+        }
+
+        .m-t-#{$key}-med {
+            margin-top: $value !important;
+        }
+
+        .m-b-#{$key}-med {
+            margin-bottom: $value !important;
+        }
+
+        .m-r-#{$key}-med {
+            margin-right: $value !important;
+        }
+
+        .m-l-#{$key}-med {
+            margin-left: $value !important;
+        }
+
+        .p-#{$key}-med {
+            padding: $value;
+        }
+
+        .p-t-#{$key}-med {
+            padding-top: $value;
+        }
+
+        .p-b-#{$key}-med {
+            padding-bottom: $value;
+        }
+
+        .p-r-#{$key}-med {
+            padding-right: $value;
+        }
+
+        .p-l-#{$key}-med {
+            padding-left: $value;
+        }
+    }
+}

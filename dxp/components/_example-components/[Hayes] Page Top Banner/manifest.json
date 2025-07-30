@@ -1,0 +1,139 @@
+{
+    "$schema": "http://localhost:3000/schemas/v1.json",
+    "name": "hayes-page-top-banner",
+    "namespace": "hayes-page-top-banner-db",
+    "displayName": "[Hayes] Page Top Banner",
+    "description": "Image/Video to be used at the top of a page, visual component that can be used for navigation aswell. Contains H1 & CTAs",
+    "version": "0.0.35",
+    "mainFunction": "main",
+    "type": "edge",
+    "icon": {
+        "id": "fiber_new",
+        "color": {
+            "type": "enum",
+            "value": "blue"
+        }
+    },
+    "functions": [
+        {
+            "name": "main",
+            "entry": "main.cjs",
+            "input": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "title": "Title",
+                        "description": "Title to display in the banner, title is the largest text",
+                        "maxLength": 80
+                    },
+                    "description": {
+                        "type": "string",
+                        "title": "Description",
+                        "description": "Description to sit underneath the title",
+                        "maxLength": 350
+                    },
+                    "image": {
+                        "type": "SquizImage",
+                        "title": "Image",
+                        "description": "Image to display as the banner"
+                    },
+                    "ctaButtons": {
+                        "type": "array",
+                        "title": "CTA Buttons",
+                        "description": "Array for CTA button information",
+                        "minItems": 0,
+                        "maxItems": 2,
+                        "items": {
+                            "type": "object",
+                            "title": "CTA Button",
+                            "required": [
+                                "link"
+                            ],
+                            "properties": {
+                                "link":{
+                                    "type": "SquizLink",
+                                    "title": "CTA Link and Text",
+                                    "description": "Link and text for the CTA buttons, sits underneath title/description"
+                                }
+                            }
+                        }
+                    },
+                    "dropdownLinks": {
+                        "type": "array",
+                        "title": "Drop down links",
+                        "description": "Links to go in the drop down menu, drop down menu only appears when there are items to display",
+                        "minItems": 0,
+                        "maxItems": 15,
+                        "items": {
+                            "type": "object",
+                            "title": "Drop Down Links",
+                            "required": [],
+                            "properties": {
+                                "link": {
+                                    "type": "SquizLink",
+                                    "title": "Drop Down Link",
+                                    "description": "Goes into a drop down section with text"
+                                }
+                            }
+                        }
+                    },
+                    "showPageName": {
+                        "type": "boolean",
+                        "title": "Show the page name",
+                        "description": "Shows the pages name at the top left of the banner, replaces the title as the H1",
+                        "default": false 
+                    },
+                    "contentSide": {
+                        "type": "string",
+                        "title": "Move content to which side",
+                        "description": "Moves the content to the left or right of the banner",
+                        "oneOf": [
+                            {"enum": ["left"], "title": "Left"},
+                            {"enum": ["right"], "title": "Right"}
+                        ],
+                        "default": "start"
+                    }
+                },
+                "required": []
+            },
+            "output": {
+                "responseType": "html",
+                "staticFiles": [
+                    {
+                        "location": "header",
+                        "file": {
+                            "type": "css",
+                            "filepath": "default.css"
+                        }
+                    },
+                    {
+                        "location": "footer",
+                        "file": {
+                            "type": "js",
+                            "filepath": "default.js"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "previews": {
+        "default": {
+            "functionData": {
+                "main": {
+                    "inputData": {
+                        "type": "file",
+                        "path": "previews/example.data.json"
+                    },
+                    "wrapper": {
+                        "path": "previews/preview-wrapper-hayes.html"
+                    }
+                }
+            }
+        }
+    },
+    "staticFiles": {
+        "locationRoot": "static"
+    }
+}

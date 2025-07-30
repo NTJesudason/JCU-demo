@@ -1,0 +1,97 @@
+/* Client Side CSS goes here */
+.hayes-usp-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+}
+
+.hayes-usp-card {
+    border-left-style: solid;
+    border-left-width: 0.375rem;
+    flex-basis: calc(100% / 3);
+    flex-grow: 1;
+    padding: 2.5rem 1.5rem;
+    text-decoration: none;
+    color: #53565a
+}
+
+.hayes-usp-card:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.hayes-usp-card-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.jcu-v1__bg-color__beige .hayes-usp-card {
+    background-color: #fff;
+}
+
+.hayes-usp-text {
+    color: #53565a;
+    font-size: 1.875rem;
+    font-weight: bold;
+}
+
+/* Mobile & Tablet */
+@media only screen and (max-width: 1200px) {
+    .hayes-usp-wrapper {
+        flex-direction: column;
+    }
+
+    .hayes-usp-card {
+        width: 100%;
+    }
+}
+
+.jcu-v1__border-color__beige {
+    border-color: #f4f3ed
+}
+
+.jcu-v1__border-color__celeste {
+    border-color: #d7d4c2
+}
+
+.jcu-v1__border-color__darkgrey {
+    border-color: #53565a
+}
+
+.jcu-v1__border-color__burghandy {
+    border-color: #980634
+}
+
+.jcu-v1__border-color__blue {
+    border-color: #06c
+}
+
+.jcu-v1__border-color__green {
+    border-color: #008b4c
+}
+
+.jcu-v1__border-color__gold {
+    border-color: #edb800
+}
+
+.jcu-v1__border-color_aquagreen {
+    border-color: #009681
+}
+
+.jcu-v1__border-color__purple {
+    border-color: #991e66
+}
+
+.jcu-v1__border-color__darkblue {
+    border-color: #183686
+}
+
+.jcu-v1__border-color__orange {
+    border-color: #d34017
+}
+
+.jcu-v1__border-color__lightblue {
+    border-color: #007bc3
+}

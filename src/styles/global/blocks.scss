@@ -1,0 +1,30 @@
+// Standard wrapper and container for components
+// Sets width and location on full width hayes pages
+@use '../variables.scss' as variables;
+@use 'sass:map';
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.wrapper {
+    padding: map.get(variables.$spacing, "200") 0;
+
+    //removes top padding on the first wrapper in the body
+    #body--content-inner-wrapper > &:first-of-type {
+        padding-top: 0;
+    }
+}
+
+.container {
+    max-width: variables.$hayes-wide-width;
+    margin: auto;
+    padding: 0 map.get(variables.$spacing, "100");
+
+    //removes padding on containers nested withing main content column
+    // #body--content-inner-wrapper & {
+    //     padding: 0;
+    // }
+}

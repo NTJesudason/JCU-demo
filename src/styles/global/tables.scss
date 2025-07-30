@@ -1,0 +1,54 @@
+// Default table styling
+// Classes for tables
+
+@use '../variables.scss' as variables;
+@use 'sass:map';
+
+// Table styling
+table {
+    width: 100%;
+    margin: 0 0 map.get(variables.$spacing, "100");
+}
+
+// Header styling
+th {
+    text-align: left;
+    font-weight: variables.$font-semibold;
+    background-color: map.get(variables.$colours, sand-2);
+}
+
+// Table data styling
+td {
+    background-color: map.get(variables.$colours, sand-3);
+}
+
+// Header and data styling
+th,
+td {
+    padding: 0 map.get(variables.$spacing, "025");
+}
+
+// Borders
+table,
+th,
+td {
+    border: 1px solid map.get(variables.$colours, neutral-1);
+    border-collapse: collapse;
+}
+
+// Custom table classes
+table {
+    // borderless
+    &.border-none,
+    &.border-none table,
+    &.border-none th,
+    &.border-none td {
+        border: none;
+    }
+
+    // Set on the table, parent has to have overflow-x scroll
+    // Makes the table scroll
+    &.mobile-overflow {
+        min-width: 768px;
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "uniqueID": "single-multi-column",
+    "backgroundColour": "bg-white",
+    "paddingTop": "default",
+    "paddingBottom": "default",
+    "headerText": "Discover What Sets Us Apart",
+    "items": [
+        {
+            "columnHeader": "Innovative Learning",
+            "columnText": "<p>At JCU, we believe education should evolve with the world. Our programs are built around real-world challenges and emerging technologies to equip students for tomorrows jobs—today.</p>",
+            "dropDownContent": "<p> Our curriculum is shaped by global trends, industry insights, and student feedback. From immersive simulations to collaborative labs, we focus on developing critical thinking and practical skills</p>"
+        },
+        {
+            "columnHeader": "Global Connections",
+            "columnText": "<p>Experience education without borders. With international partnerships and exchange programs, JCU connects you to a world of opportunity—both in and beyond the classroom.</p>",
+            "cta": {
+                "text": "Explore Study Abroad Options",
+                "url": "https://www.jcu.edu.au"
+            },
+            "dropDownContent": "<p>This content shouldn't be display, CTA takes priority</p>"
+        },
+        {
+            "columnHeader": "Community-Focused Research",
+            "columnText": "<p>JCU’s research culture is driven by impact. Our students and staff collaborate with local communities to solve real-world problems and create meaningful change.</p>"
+        }
+    ]
+}

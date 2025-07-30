@@ -1,0 +1,82 @@
+// Custom icons
+@use '../variables.scss' as variables;
+@use 'sass:map';
+
+// External link
+a[href]:not([href*="www.jcu"]):not(footer a)::after, 
+a[target="_blank"]:not(footer a)::after {
+    content: "\2197";
+    margin-right: 0.25em;
+    font-size: variables.$font-lead;
+}
+
+// Class to disable a element external link
+.external-disabled::after {
+    content: "" !important;
+    margin-right: 0 !important;
+}
+
+// Class to add download symbol after file type links
+a[href*=".pdf"]::after,
+a[href*=".docx"]::after,
+a[href*=".xlsx"]::after {
+    content: "URL WILL GO HERE"
+}
+
+// Icons
+@mixin icons($class-name, $url, $rotation, $active-rotation) {
+    .#{$class-name}::after,
+    .#{$class-name}-before::before {
+        content: url($url);
+        transition: transform 0.5s ease;
+        line-height: 0;
+        transform: rotate($rotation);
+    }
+
+    .#{$class-name},
+    .#{$class-name}-before {
+        &.active::after,
+        &.active::before {
+            transform: rotate($active-rotation);
+        }
+
+        &.#{$class-name}-s::after,
+        &.#{$class-name}-s::before {
+            transform: scale(0.7);
+        }
+
+        &.active.#{$class-name}-s::after,
+        &.active.#{$class-name}-s::before {
+            transform: rotate($active-rotation) scale(0.7);
+        }
+    }
+}
+
+// plus
+@include icons("plus", "https://www.jcu.edu.au/__data/assets/file/0005/2260382/plus.svg", 0deg, 45deg);
+@include icons("plus-bg", "https://www.jcu.edu.au/__data/assets/file/0003/2260371/plus-bg-blue.svg", 0deg, 45deg);
+
+// Arrows
+@include icons("arrow-r", "https://www.jcu.edu.au/__data/assets/file/0009/2260386/arrow.svg", 0deg, 180deg);
+@include icons("arrow-r-bg", "https://www.jcu.edu.au/__data/assets/file/0010/2260387/arrow-bg-blue.svg", 0deg, 180deg);
+
+// chevrons
+// right chevron
+@include icons("chevron-r", "https://www.jcu.edu.au/__data/assets/file/0011/2260388/chevron.svg", 0deg, 180deg);
+@include icons("chevron-r-bg", "https://www.jcu.edu.au/__data/assets/file/0003/2260389/chevron-bg-blue.svg", 0deg, 180deg);
+
+// left chevron
+@include icons("chevron-l", "https://www.jcu.edu.au/__data/assets/file/0011/2260388/chevron.svg", 180deg, 0deg);
+@include icons("chevron-l-bg", "https://www.jcu.edu.au/__data/assets/file/0003/2260389/chevron-bg-blue.svg", 180deg, 0deg);
+
+// Up chevron
+@include icons("chevron-u", "https://www.jcu.edu.au/__data/assets/file/0011/2260388/chevron.svg", 270deg, 90deg);
+@include icons("chevron-u-bg", "https://www.jcu.edu.au/__data/assets/file/0003/2260389/chevron-bg-blue.svg", 270deg, 90deg);
+
+// Down chevron
+@include icons("chevron-d", "https://www.jcu.edu.au/__data/assets/file/0011/2260388/chevron.svg", 90deg, 270deg);
+@include icons("chevron-d-bg", "https://www.jcu.edu.au/__data/assets/file/0003/2260389/chevron-bg-blue.svg", 90deg, 270deg);
+
+// Scroll button chevrons
+@include icons("chevron-scroll-r", "https://www.jcu.edu.au/__data/assets/file/0007/2260393/chevron-bg-blue-big.svg", 0deg, 180deg);
+@include icons("chevron-scroll-l", "https://www.jcu.edu.au/__data/assets/file/0007/2260393/chevron-bg-blue-big.svg", 180deg, 0deg);

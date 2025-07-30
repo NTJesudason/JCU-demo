@@ -1,0 +1,57 @@
+// Global grid styling for page layout and component wrappers
+@use '../variables.scss' as variables;
+@use 'sass:map';
+@use 'sass:math';
+
+
+@mixin grid-12() {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    margin-bottom: map.get(variables.$spacing, "100");
+    gap: 1rem;
+}
+
+// Default grid 12 layout
+.grid-12 {
+    @include grid-12();
+
+    &.nogap {
+        gap: 0;
+    }
+}
+
+@media (width >=variables.$tablet-breakpoint) {
+    .grid-12 {
+        gap: map.get(variables.$spacing, "200");
+    }
+}
+
+$columns: 12;
+// Span the grid from 1-12 for default, laptop, desktop
+.grid-12 {
+    @for $i from 1 through $columns {
+        // Mobile sizing
+        .col-#{$i} {
+            grid-column: span #{$i};
+        }
+    }
+
+    // laptop sizing
+    @media (width >=variables.$mobile-breakpoint) {
+        @for $i from 1 through $columns {
+            .col-#{$i}-med {
+                grid-column: span #{$i};
+            }
+        }
+    }
+
+    // Desktop sizing
+    @media (width >=variables.$tablet-breakpoint) {
+        @for $i from 1 through $columns {
+            .col-#{$i}-lrg {
+                grid-column: span #{$i};
+            }
+        }
+    }
+}

@@ -1,0 +1,86 @@
+{
+    "title": "Because you are ready",
+    "description": "Ready when you are because when your ready we are ready.",
+    "image": {
+        "name": "My Image",
+        "alt": "The alt if the image doesn't load",
+        "caption": "This above is a loaded image",
+        "imageVariations": {
+            "original": {
+                "url": "https://www.jcu.edu.au/__data/assets/image/0009/2228148/varieties/fullhd.jpg",
+                "width": 100,
+                "height": 100,
+                "byteSize": 1000,
+                "mimeType": "image/jpeg",
+                "aspectRatio": "1:1",
+                "sha1Hash": "1234567890abcdef1234567890abcdef12345678"
+            }
+        }
+    },
+    "ctaButtons": [
+        {
+            "link": {
+                "text": "Make an enquiry",
+                "url": "https://www.jcu.edu.au/future-students/contact-us-future-students"
+            }
+        },
+        {
+            "link": {
+                "text": "Apply to JCU",
+                "url": "https://www.jcu.edu.au/applying-to-jcu"
+            }
+        }
+    ],
+    "dropdownLinks": [
+        {
+            "link": {
+                "text": "Link 1",
+                "url": "https://www.jcu.edu.au/future-students/contact-us-future-students"
+            }
+        },
+        {
+            "link": {
+                "text": "Apply to JCU",
+                "url": "https://www.jcu.edu.au/applying-to-jcu"
+            }
+        },
+        {
+            "link": {
+                "text": "Make an enquiry",
+                "url": "https://www.jcu.edu.au/future-students/contact-us-future-students"
+            }
+        },
+        {
+            "link": {
+                "text": "Link 3",
+                "url": "https://www.jcu.edu.au/applying-to-jcu"
+            }
+        },
+        {
+            "link": {
+                "text": "Hello World",
+                "url": "https://www.jcu.edu.au/future-students/contact-us-future-students"
+            }
+        },
+        {
+            "link": {
+                "text": "Lorem ipsum adsao d",
+                "url": "https://www.jcu.edu.au/applying-to-jcu"
+            }
+        },
+        {
+            "link": {
+                "text": "Hello World",
+                "url": "https://www.jcu.edu.au/future-students/contact-us-future-students"
+            }
+        },
+        {
+            "link": {
+                "text": "Lorem ipsum adsao d",
+                "url": "https://www.jcu.edu.au/applying-to-jcu"
+            }
+        }
+    ],
+    "showPageName": true,
+    "contentSide": "left"
+}

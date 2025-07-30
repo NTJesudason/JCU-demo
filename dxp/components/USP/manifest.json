@@ -1,0 +1,133 @@
+{
+    "$schema": "http://localhost:3000/schemas/v1.json",
+    "name": "usp",
+    "namespace": "unique-selling-point-db",
+    "displayName": "USP",
+    "description": "Unique selling point component, 2-3 boxes in a row with a title, link & description.",
+    "version": "0.0.2",
+    "mainFunction": "main",
+    "type": "edge",
+    "icon": {
+        "id": "fiber_new",
+        "color": {
+            "type": "enum",
+            "value": "blue"
+        }
+    },
+    "functions": [
+        {
+            "name": "main",
+            "entry": "main.cjs",
+            "input": {
+                "type": "object",
+                "properties": {
+                    "uniqueID": {
+                        "type": "string",
+                        "title": "Unique ID",
+                        "description": "Unique ID to be set on the wrapper level."
+                    },
+                    "paddingTop": {
+                        "type": "string",
+                        "title": "Space above",
+                        "description": "Padding size above wrapper.",
+                        "oneOf": [
+                            {"enum": ["default"], "title": "Default"},
+                            {"enum": ["p-t-0"], "title": "none"}
+                        ],
+                        "default": "default"
+                    },
+                    "paddingBottom": {
+                        "type": "string",
+                        "title": "Space above",
+                        "description": "Padding size above wrapper.",
+                        "oneOf": [
+                            {"enum": ["default"], "title": "Default"},
+                            {"enum": ["p-b-0"], "title": "none"}
+                        ],
+                        "default": "default"
+                    },
+                    "backgroundColour": {
+                        "type": "string",
+                        "title": "Background colour",
+                        "description": "Sets the background colour from the wrapper level",
+                        "oneOf": [
+                            {"enum": ["bg-white"], "title": "White"},
+                            {"enum": ["bg-sand-2"], "title": "sand-2"},
+                            {"enum": ["bg-ocean-3"], "title": "Mid Blue"}
+                        ],
+                        "default": "bg-white"
+                    },
+                    "headerText": {
+                        "type": "string",
+                        "title": "Header text",
+                        "description": "Sets the components header on page"
+                    },
+                    "items": {
+                        "type": "array",
+                        "title": "USP Cards",
+                        "description": "Each entry is a card, minimum of 2 maximum of 3.",
+                        "minItems": 2,
+                        "maxItems": 3,
+                        "items": {
+                            "type": "object",
+                            "title": "USP Card",
+                            "required": [
+                                
+                            ],
+                            "properties": {
+                                "link": {
+                                    "type": "SquizLink",
+                                    "title": "Title and link",
+                                    "description": "Enter the title and the link into this item."
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "title": "Descrption of USP",
+                                    "description": "Description of USP to sit under the title"
+                                },
+                                "borderColour": {
+                                    "type":  "string",
+                                    "title": "Border colour",
+                                    "description": "Border colour to be used on the left edge of the card.",
+                                    "oneOf": [
+                                        {"enum": ["border-left-ocean-3"], "title": "Mid Blue"},
+                                        {"enum": ["border-left-theme-1"], "title": "Theme 1"},
+                                        {"enum": ["border-left-theme-2"], "title": "Theme 2"},
+                                        {"enum": ["border-left-theme-3"], "title": "Theme 3"},
+                                        {"enum": ["border-left-theme-4"], "title": "Theme 4"},
+                                        {"enum": ["border-left-theme-5"], "title": "Theme 5"},
+                                        {"enum": ["border-left-theme-6"], "title": "Theme 6"}
+                                    ],
+                                    "default": "border-left-ocean-3"
+                                }
+                            }
+                        }
+                    }
+                },
+                "required": [
+                    "paddingTop",
+                    "paddingBottom",
+                    "backgroundColour"
+                ]
+            },
+            "output": {
+                "responseType": "html"
+            }
+        }
+    ],
+    "previews": {
+        "default": {
+            "functionData": {
+                "main": {
+                    "inputData": {
+                        "type": "file",
+                        "path": "previews/example.data.json"
+                    },
+                    "wrapper": {
+                        "path": "previews/preview.html"
+                    }
+                }
+            }
+        }
+    }
+}

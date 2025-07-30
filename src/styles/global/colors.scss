@@ -1,0 +1,16 @@
+// Colours
+// Background, borders etc
+// Only global classes used here
+
+@use '../variables.scss' as variables;
+@use 'sass:map';
+@use 'sass:list';
+
+// Loop through all colours to create background classes
+@each $key, $value in variables.$colours {
+    .bg-#{$key} {
+        background-color: $value;
+        // -bg-color variable set so that opacity class can inherit it
+        --bg-color: #{$value};
+    }
+}

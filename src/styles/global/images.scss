@@ -1,0 +1,83 @@
+@use '../variables.scss' as variables;
+@use 'sass:map';
+
+// Default image styling
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-sizing: border-box;
+    margin: 0 0 map.get(variables.$spacing, "100");
+    padding: 0;
+    object-fit: cover;
+}
+
+// Image classes
+// Widths
+.img25 {
+    width: 25%;
+}
+
+.img50 {
+    width: 50%;
+}
+
+.img75 {
+    width: 75%;
+}
+
+// Aspect ratios
+// #{} is to output the string value e.g. 16 / 9
+// 16/9
+// .landscape-1 {
+//     aspect-ratio: #{variables.$aspect-ratio-landscape};
+// }
+// // 4/3
+// .landscape-2 {
+//     aspect-ratio: #{variables.$aspect-ratio-landscape-2};
+// }
+// // 9/16
+// .portrait {
+//     aspect-ratio: #{variables.$aspect-ratio-portrait};
+// }
+// // 1/1
+// .square {
+//     aspect-ratio: #{variables.$aspect-ratio-square};
+// }
+
+@each $key, $value in variables.$aspect-ratio {
+    .#{$key} {
+        aspect-ratio: #{$value};
+    }
+}
+
+// Inline stlying 2-3 images in a row
+.img-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: map.get(variables.$spacing, "200");
+}
+
+.img-row img {
+    aspect-ratio: #{map.get(variables.$aspect-ratio, landscape)};
+    height: auto;
+    width: calc(50% - 1rem);
+    object-fit: cover;
+    margin: 0;
+}
+
+.img-row:has(> :last-child:nth-child(3)) img {
+    width: calc(33% - 1.15rem);
+    aspect-ratio: #{map.get(variables.$aspect-ratio, square)};
+}
+
+@media (width <= variables.$mobile-breakpoint) {
+    .img-row img {
+        width: calc(50% - 0.5555rem);
+    }
+
+    .img-row:has(> :last-child:nth-child(3)) img {
+        width: calc(33% - 0.6666rem);
+    }
+}

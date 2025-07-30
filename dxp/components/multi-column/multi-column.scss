@@ -1,0 +1,12 @@
+// Single / multi column text styles
+
+// Change margin to padding for border-left
+.multi-column__content p {
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+}
+
+// Force height on cta link to match button
+.multi-column__cta {
+    height: 1.5rem;
+}

@@ -1,0 +1,50 @@
+@use '../variables.scss' as variables;
+
+// Global hover states go here etc, component image hover
+
+// Image hover for components, particularly articles
+// Moves image to the top and right, brings background out to the bottom and left
+// Requires a background colour class applied, is what colour it uses
+.image-hover {
+    transition: transform 0.5s;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.image-hover::before {
+    background-color: var(--bg-color);
+    content: "";
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    transition: transform 0.5s;
+    z-index: variables.$z-index-below;
+}
+
+.image-hover:hover {
+    transform: translate(5px, -5px);
+}
+
+.image-hover:hover::before {
+    transform: translate(-5px, 5px);
+}
+
+// This is used for the ocean-3 thick underline on hover
+// This is also used with articles, prefered on the title
+// Use the mixin with the selector required to target the correct element
+@mixin defaultHover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+    text-decoration-thickness: 0.2rem;
+}
+
+// Default hover state class
+.hover:hover {
+    @include defaultHover;
+}
+
+.nodec-hover:hover {
+    text-decoration: none;
+}

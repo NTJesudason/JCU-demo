@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en-au">
+    <head>
+        <title>Hayes Page Wide</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="https://www.jcu.edu.au/_media/page-elements/favicon.ico">
+
+        <!-- Connect to google -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- Open Sans font -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+            rel="stylesheet" />
+        <!-- Playfair Display -->
+        <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet" />
+
+<!-- New CSS -->
+<link rel="stylesheet" type="text/css" media="screen" href="../main.css">
+
+<!-- JQUERY CDN -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+    </script>
+
+        <!-- JQUERY CDN -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous">
+        </script>
+
+    </head>
+    <body class="page-top page-wrapper">
+            <header class="header">
+
+        <nav id="skip_links" aria-label="Skip links menu" class="flex align-center space-center">
+            <!-- TODO: update anchor links -->
+            <a href="#jcu-v1-main-navigation">Skip to main navigation</a>
+            <a href="#main">Skip to main content</a>
+        </nav>
+
+        <div class="header--utility-menu flex">
+            <div class="container m-t-0 align-center w-100 flex">
+                <nav id="utility_links" aria-label="Utility menu links">
+                    <a class="f-display-5" href="https://www.jcu.edu.au/staff">Staff</a>
+                    <a class="m-l-050 p-l-050 f-display-5 border-left" href="https://www.jcu.edu.au/redirect/jcuapp">JCU App</a>
+                    <a class="m-l-050 p-l-050 f-display-5 border-left" href="https://www.jcu.edu.au/library">Library</a>
+                    <a class="m-l-050 p-l-050 f-display-5 border-left" href="https://www.jcu.edu.au/learn/log-in-to-learnjcu">
+                        LearnJCU
+                    </a>
+                    <a class="m-l-050 p-l-050 f-display-5 border-left" href="https://www.jcu.edu.au/jcu-contact-information">
+                        Contact
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="header--menu flex">
+            <div class="header--menu--outer-wrapper container m-t-0 flex space-between w-100">
+                <div class="header--menu-logo flex align-center h-100">
+                    <a class="header--menu-logo-link" href="https://www.jcu.edu.au">
+                        James Cook University Home
+                    </a>
+                </div>
+                
+                <div class="header--menu--cta-links flex align-center p-r-250 w-100">
+                    <nav class=" flex h-100" id="main-navigation" aria-label="Utility menu links">
+                        <div>
+                            <a class="header--menu--cta-links_item--L1 flex h-100 f-semibold f-lead align-center" href="https://www.jcu.edu.au/#">Apply to JCU</a>
+                        </div>
+                        <div>
+                            <a class="header--menu--cta-links_item--L1 flex h-100 f-semibold f-lead align-center" href="https://www.jcu.edu.au/#">JCU Courses</a>
+                        </div>
+                    </nav>
+                </div>
+    
+                <div class=" flex space-center align-center f-display-6">
+                    <button class="header--menu--mobile-nav-btn m-b-0 btn secondary-one border-none p-100 flex flex-column align-center" type="button" aria-label="Search JCU" class="header--menu--mobile-nav-buttons">
+                        <span class="header--menu-mobile-nav--btn--icon "></span>
+                        <span>Search</span>
+                    </button>
+                    <button class="header--menu--mobile-nav-btn btn border-none p-100 flex flex-column align-center" type="button" aria-label="Search JCU" class="header--menu--mobile-nav-buttons">
+                        <span class="header--menu-mobile-nav--btn--icon menu-icon">
+                        </span>
+                        <span>Menu</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div class="header--menu--search-wrapper">
+            <div class="header--menu--search-container">
+                <form method="GET" action="/search" id="searchForm" class="flex flex-row flex-wrap space-center p-200">
+                    <label class="hidden">collection
+                        <input hidden="" type="text" name="collection" value="jcua">
+                    </label>
+                    <label class="w-100 f-display-3" for="search-query">JCU: Ready today for tomorrow</label>
+                    
+                    <!-- TODO: remove this class: header--menu--search-checkboxes -->
+                    <div class="header--menu--search-checkboxes flex w-100">
+                        <ul class="header--menu--search-checkboxes-list flex flex-column list-none p-0">
+                        <li class="header--menu--search-checkboxes-list-item">
+                                <input type="radio" data-url="" name="searchRadios" value="searchAllContent" id="searchAllContent" class="" checked="">
+                                <label for="searchAllContent" class="f-semibold">Search all content</label>
+                            </li>
+                            <li class="header--menu--search-checkboxes-list-item">
+                                <input type="radio" data-url="https://www.jcu.edu.au/courses" name="searchRadios" value="searchCourse" id="searchCourse" class="">
+                                <label for="searchCourse" class="f-semibold">Search courses</label>
+                            </li>
+                            <li class="header--menu--search-checkboxes-list-item p-b-050">
+                                <div class="header--menu--search-chevron"></div>
+                                <a class="f-semibold" href="https://www.jcu.edu.au/courses-and-study">Browse study areas</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex w-100">
+                        <input id="search-query" class="search-query" type="text" name="query">
+                        <button class="search-btn" type="submit" aria-label="submit search query"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+        <main class="">
+            <div class="container">
+                <h1 class="wrapper">Heading One</h1>
+            </div>
+    
+            <div id="body--content-outer-wrapper" class="flex gap-medium container">
+                <div id="body--content-inner-wrapper">
+                    <div class="wrapper">
+                        <div class="container">
+                            <h2>Header Two</h2>
+                            <p><a href="https://www.jcu.edu.au">THis where the content will go</a></p>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="container">
+                            <h2>Header Two</h2>
+                            <p>What is Lorem Ipsum?
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            </p>
+                            <p>
+                                Why do we use it?
+                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                            </p>
+                            <p> 
+                                Where does it come from?
+                Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+                        </p>
+                        <p>
+                            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
+                            interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
+                            also reproduced in their exact original form, accompanied by English versions from the 1914
+                            translation by H. Rackham.
+                        </p>
+
+
+
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="container">
+                        <h2>Header Two</h2>
+                        <p>THis where the content will go</p>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="container">
+                        <h2>Header Two</h2>
+                        <p>THis where the content will go</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="wrapper">
+                <div class="container">
+                    <h2>Header Two</h2>
+                    <p>What is Lorem Ipsum?
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                        galley of type and scrambled it to make a type specimen book. It has survived not only five
+                        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                        passages, and more recently with desktop publishing software like Aldus PageMaker including
+                        versions of Lorem Ipsum.
+                    </p>
+                    <p>
+                        Why do we use it?
+                        It is a long established fact that a reader will be distracted by the readable content of a
+                        page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                        more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                        here', making it look like readable English. Many desktop publishing packages and web page
+                        editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                        uncover many web sites still in their infancy. Various versions have evolved over the years,
+                        sometimes by accident, sometimes on purpose (injected humour and the like).
+                    </p>
+                    <p>
+                        Where does it come from?
+                        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece
+                        of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,
+                        a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure
+                        Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the
+                        word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from
+                        sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
+                        Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very
+                        popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit
+                        amet..", comes from a line in section 1.10.32.
+
+                    </p>
+                    <p>
+                        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those
+                        interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
+                        also reproduced in their exact original form, accompanied by English versions from the 1914
+                        translation by H. Rackham.
+                    </p>
+
+
+
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="container">
+                    <h2>Header Two</h2>
+                    <p>THis where the content will go</p>
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="container">
+                    <h2>Header Two</h2>
+                    <p>THis where the content will go</p>
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>

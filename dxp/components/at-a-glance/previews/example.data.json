@@ -1,0 +1,35 @@
+{
+    "backgroundColour": "bg-white",
+    "headerText": "Test header",
+    "paddingTop": "default",
+    "paddingBottom": "default",
+    "centerHeader": true,
+    "scrollOverflow": true,
+    "stats": [
+        {
+            "items": {
+                "title": "This is the title",
+                "subTitle": "This is the subtitle"
+            }
+        },
+        {
+            "items": {
+                "title": "This is the title",
+                "subTitle": "This is the subtitle"
+            }
+        },
+        {
+            "items": {
+                "title": "This is the title",
+                "subTitle": "This is the subtitle"
+            }
+        },
+        {
+            "items": {
+                "title": "This is the title",
+                "subTitle": "This is the subtitle"
+            }
+        }
+    ],
+    "references": "references text"
+}

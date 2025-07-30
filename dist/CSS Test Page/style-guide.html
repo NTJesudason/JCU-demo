@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Style Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- updated to global compiled css sheet -->
+    <link rel="stylesheet" type="text/css" media="screen" href="../main.css" />
+    <script src="../main.js"></script>
+
+    <!-- Connect to google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Open Sans font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet" />
+    <!-- Playfair Display -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet" />
+
+    <!-- JQUERY CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+        </script>
+</head>
+
+<body>
+    <main>
+        <!-- Anchor to link to top -->
+        <div class="p-100 bg-ocean-3 opacity-80 f-primary-light" style="position:sticky;top:0;display:inline;">
+            <a href="#table-of-contents">Back to top</a>
+        </div>
+
+        <section class="wrapper  bg-sand-2 p-t-300">
+            <div class="container">
+                <h1 class="f-regular">JCU Web Style Guide — Internal</h1>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h2 class="table-content-ignore">Table of contents</h2>
+                <div id="table-of-contents" style="columns: 4;"></div>
+            </div>
+        </section>
+
+        <style>
+            #table-of-contents>div>ul>li {
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+        </style>
+        <!-- Script to create table of contents -->
+        <script>
+            window.addEventListener(`load`, function () {
+                let headings = document.querySelectorAll(`h2, h3, h4`);
+                let element = document.getElementById(`table-of-contents`);
+                let currentHeadingLevel = `h1`;
+                let html = ``;
+                console.log(headings);
+                for (let i = 0; i < headings.length; i++) {
+                    // Skip if set to ignore
+                    if (headings[i].classList.contains(`table-content-ignore`)) { continue; }
+                    createID(headings[i]);
+
+                    if (headings[i].localName[1] > currentHeadingLevel[1]) {
+                        if (headings[i].localName[1] == 2) { html += `<div style="break-inside: avoid;">` }
+                        html += `<ul class="m-b-0">
+                                        <li><a href="#${headings[i].id}" class="external-disabled">${headings[i].innerHTML}</a></li>`;
+                    }
+                    else if (headings[i].localName[1] == currentHeadingLevel[1]) {
+                        html += `<li><a href="#${headings[i].id}" class="external-disabled">${headings[i].innerHTML}</a></li>`;
+                    }
+                    else if (headings[i].localName[1] < currentHeadingLevel[1]) {
+                        let numClosingTag = currentHeadingLevel[1] - headings[i].localName[1];
+                        for (let x = 0; x < numClosingTag; x++) {
+                            html += `</ul>`
+                        }
+                        if (headings[i].localName[1] == 2) { html += `</div><div style="break-inside: avoid;"><ul>` }
+                        html += `<li><a href="#${headings[i].id}" class="external-disabled">${headings[i].innerHTML}</a></li>`;
+                    }
+                    currentHeadingLevel = headings[i].localName;
+                }
+                html += `</div>`;
+                element.innerHTML = html;
+            });
+
+            function createID(element) {
+                let id = element.innerHTML.replaceAll(` `, `-`).toLowerCase();
+                element.id = id;
+            }
+
+        </script>
+
+        <section class="wrapper">
+            <div class="container">
+                <h2>TYPOGRAPHY</h2>
+                <h3>Fonts and weights</h3>
+                <hr>
+                <section class="grid-12">
+                    <div class="col-6">
+                        <p class="f-overline">Primary font</p>
+                        <h3 class="f-primary table-content-ignore">Open Sans</h3>
+                        <p class="f-overline">Weights </p>
+                        <ul>
+                            <li class="f-regular">400 - .f-regular</li>
+                            <li class="f-medium">500 - .f-medium (Limited use)</li>
+                            <li class="f-semibold">600 - .f-semibold</li>
+                            <li class="f-bold">700 - .f-bold</li>
+                            <li class="f-black">800 - .f-black (Limited use)</li>
+                    </div>
+                    <div class="col-6">
+                        <p class="f-overline">Secondary font </p>
+                        <h3 class="f-secondary table-content-ignore">Playfair Display</h3>
+                        <p class="f-overline">Weights </p>
+                        <ul>
+                            <li class="f-secondary f-regular">400 - .f-regular</li>
+                            <li class="f-secondary f-bold">700 - .f-bold (Limited use)</li>
+                            <li class="font-secondary f-black">800 - .f-black (Limited use)</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="grid-12">
+                    <div class="col-12">
+                        <h3>Heading styles</h3>
+                        <hr>
+                    </div>
+                    <div class="col-6">
+                        <h4>H1 - P styles</h4>
+                        <h1 class="f-regular table-content-ignore">H1 heading</h1>
+                        <h2 class="table-content-ignore">H2 heading</h2>
+                        <h3 class="table-content-ignore">H3 heading</h3>
+                        <h4 class="table-content-ignore">H4 heading</h4>
+                        <h5 class="table-content-ignore">H5 heading</h5>
+                        <h6 class="table-content-ignore">H6 heading</h6>
+                        <p>
+                            p – Lorem ipsum dolor sit amet,
+                            <a href="#">consectetur adipisicing </a>elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna
+                            <em>aliqua. Ut enim ad minim veniam,</em> quis nostrud
+                            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat.
+                        </p>
+                    </div>
+                    <div class="col-6">
+                        <h4>Display styles</h4>
+                        <p class="f-display-1 f-secondary">.f-display-1</p>
+                        <p class="f-display-2">.f-display-2</p>
+                        <p class="f-display-3">.f-display-3</p>
+                        <p class="f-display-4">.f-display-4</p>
+                        <p class="f-display-5">.f-display-5</p>
+                        <p class="f-display-6">.f-display-6</p>
+                    </div>
+                </section>
+
+                <section class="grid-12">
+                    <div class="col-12">
+                        <h3>Font colours</h3>
+                        <hr>
+                    </div>
+
+                    <div class="col-6">
+                        <h4>Basic font colours</h4>
+                        <p class="f-primary-dark">.f-primary-dark</p>
+                        <p class="f-primary-light bg-neutral-1 d-inline-block">.f-primary-light</p>
+                    </div>
+
+                    <div class="col-6">
+                        <h4>Link colours / Link states</h4>
+                        <p>
+                            <a href="#"> This is an external link with default styling</a>
+                        </p>
+                        <p><a href="#" class="external-disabled">This is an external link with the class
+                                <strong>.external-disabled</strong></a></p>
+                        <p class="f-primary-light bg-neutral-1">This is a p tag with the class .f-primary-light
+                            applied <a href="#">This is an a / link tag inside of it</a>
+                            Text remains the same colour but gets an underline</p>
+                    </div>
+                </section>
+
+                <section class="grid-12">
+                    <div class="col-12">
+                        <h3>Font classes and tags</h3>
+                        <hr>
+                    </div>
+                    <div class="col-6">
+                        <h4>Classes</h4>
+                        <p class="f-small">.f-small – alskdjf laksjdflkasjdf</p>
+                        <p class="f-caption">.f-caption – alskdjf laksjdflkasjdf</p>
+                        <p class="f-overline">.f-overline – text lorem
+                        </p>
+                        <p>.f-uppercase <span class="f-uppercase">makes text uppercase</span></p>
+                        <p class="f-subtitle-1">.f-subtitle-1</p>
+                        <p class="f-subtitle-2">.f-subtitle-2</p>
+                        <p class="f-subtitle-3">.f-subtitle-3</p>
+                        <p class="f-lead">
+                            .f-lead - Lorem ipsum dolor sit amet, lit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua.
+                        </p>
+                        <p class="f-special-1">.f-special-1</p>
+                        <p class="f-center">Center align text with <strong>.f-center</strong></p>
+                    </div>
+                    <div class="col-6">
+                        <h4>Tags</h4>
+                        <p><strong>Strong - strong tag</strong></p>
+                        <p><em>italics - em tag</em></p>
+                    </div>
+                </section>
+
+                <section class="grid-12">
+                    <div class="col-12">
+                        <h3>
+                            List styles
+                        </h3>
+                        <hr>
+                    </div>
+                    <div class="col-6">
+                        <h4>Ordered list</h4>
+                        <ol>
+                            <li>O asdfasdf asdfasdfasd fasdfads</li>
+                            <li class="f-uppercase">Transformed text with class .f-uppercase</li>
+                            <li>e wec wd vefbegbefvef vwrfv qefqfv wdc</li>
+                            <li>weferfvecec ervewqr cwdv evr esfv</li>
+                            <li>w cwec wcw cwdv wrv webv ae vwbvsef</li>
+                        </ol>
+
+                        <p class="f-overline">Ordered list with .ol-regular applied</p>
+                        <ol class="ol-regular">
+                            <li>O asdfasdf asdfasdfasd fasdfads</li>
+                            <li class="f-uppercase">Transformed text with class .f-uppercase</li>
+                            <li>e wec wd vefbegbefvef vwrfv qefqfv wdc</li>
+                            <li>weferfvecec ervewqr cwdv evr esfv</li>
+                            <li>w cwec wcw cwdv wrv webv ae vwbvsef</li>
+                        </ol>
+                    </div>
+
+                    <div class="col-6">
+                        <h4>Unordered list</h4>
+                        <ul>
+                            <li>Afsad fasdfasd fasdfasdfasdfasdf</li>
+                            <li>lroem fea oadkco c ec ewcw dv svf</li>
+                            <li>e wec wd vefbegbefvef vwrfv qefqfv wdc</li>
+                            <li>weferfvecec ervewqr cwdv evr esfv</li>
+                            <li>w cwec wcw cwdv wrv webv ae vwbvsef</li>
+                        </ul>
+
+                        <p class="f-overline">.list-left - works with ol and ul, aligns markers to left edge</p>
+                        <ul class="list-left">
+                            <li>Afsad fasdfasd fasdfasdfasdfasdf</li>
+                            <li>lroem fea oadkco c ec ewcw dv svf</li>
+                            <li>e wec wd vefbegbefvef vwrfv qefqfv wdc</li>
+                            <li>weferfvecec ervewqr cwdv evr esfv</li>
+                            <li>w cwec wcw cwdv wrv webv ae vwbvsef</li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <p class="f-overline">.list-none - List with no list styling</p>
+                        <ul class="list-none">
+                            <li>Afsad fasdfasd fasdfasdfasdfasdf</li>
+                            <li>lroem fea oadkco c ec ewcw dv svf</li>
+                            <li>e wec wd vefbegbefvef vwrfv qefqfv wdc</li>
+                            <li>weferfvecec ervewqr cwdv evr esfv</li>
+                            <li>w cwec wcw cwdv wrv webv ae vwbvsef</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h2>BUTTONS</h2>
+                <h3>Button Primary</h3>
+                <hr>
+                <div class="flex flex-row flex-wrap gap-200">
+                    <button>Button element</button>
+                    <p class="btn">.btn</p>
+                    <p class="btn secondary-one">.btn .secondary-one</p>
+                    <p class="btn secondary-two">.btn .secondary-two</p>
+                    <p class="btn special-one">.btn .special-one</p>
+                    <p class="btn special-two">.btn .special-two</p>
+                    <button class="round-med m-b-100">.btn .round-med</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Button large</h3>
+                <hr>
+                <div class="flex flex-row flex-wrap gap-200">
+                    <button class="lrg">.btn .lrg</button>
+                    <p class="btn lrg secondary-one">.btn .lrg .secondary-one</p>
+                    <a href="#" class="btn lrg special-one">.btn .lrg .special-one</a>
+                    <a href="#" class="btn lrg special-two m-b-100">.btn .lrg .special-two</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Button borders</h3>
+                <hr>
+                <div class="flex flex-row flex-wrap gap-200 bg-neutral-1 border-0 p-200">
+                    <button class="border-none">.btn .border-none</button>
+                    <button class="clear m-b-100">.btn .clear</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Misc Buttons</h3>
+                <hr>
+                <div class="grid-12">
+                    <button class="col-2 btn-no-style">.btn-no-style</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h2>COLOURS</h2>
+                <h3>Rainforest / Nature</h3>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2 bg-ocean-1 f-primary-light p-050">
+                        <p>.bg-ocean-1</p>
+                    </div>
+                    <div class="col-2 bg-ocean-2 f-primary-light p-050">
+                        <p>.bg-ocean-2</p>
+                    </div>
+                    <div class="col-2 bg-ocean-3 f-primary-light p-050">
+                        <p>.bg-ocean-3</p>
+                    </div>
+                    <div class="col-2 bg-ocean-4 f-primary-light p-050">
+                        <p>.bg-ocean-4</p>
+                    </div>
+                    <div class="col-2 bg-ocean-5 p-050">
+                        <p>.bg-ocean-5</p>
+                    </div>
+                    <div class="col-2 bg-ocean-6 p-050">
+                        <p>.bg-ocean-6</p>
+                    </div>
+                    <div class="col-2 bg-ocean-7 p-050">
+                        <p>.bg-ocean-7</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Sun / Warmth</h3>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2 bg-sun-1 f-primary-light p-050">
+                        <p>.bg-sun-1</p>
+                    </div>
+                    <div class="col-2 bg-sun-2 f-primary-light p-050">
+                        <p>.bg-sun-2</p>
+                    </div>
+                    <div class="col-2 bg-sun-3 f-primary-light p-050">
+                        <p>.bg-sun-3</p>
+                    </div>
+                    <div class="col-2 bg-sun-4 f-primary-light p-050">
+                        <p>.bg-sun-4</p>
+                    </div>
+                    <div class="col-2 bg-sun-5 p-050">
+                        <p>.bg-sun-5</p>
+                    </div>
+                    <div class="col-2 bg-sun-6 p-050">
+                        <p>.bg-sun-6</p>
+                    </div>
+                    <div class="col-2 bg-sun-7 p-050">
+                        <p>.bg-sun-7</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Rainforest / Nature</h3>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2 bg-nature-1 f-primary-light p-050">
+                        <p>.bg-nature-1</p>
+                    </div>
+                    <div class="col-2 bg-nature-2 f-primary-light p-050">
+                        <p>.bg-nature-2</p>
+                    </div>
+                    <div class="col-2 bg-nature-3 f-primary-light p-050">
+                        <p>.bg-nature-3</p>
+                    </div>
+                    <div class="col-2 bg-nature-4 f-primary-light p-050">
+                        <p>.bg-nature-4</p>
+                    </div>
+                    <div class="col-2 bg-nature-5 p-050">
+                        <p>.bg-nature-5</p>
+                    </div>
+                    <div class="col-2 bg-nature-6 p-050">
+                        <p>.bg-nature-6</p>
+                    </div>
+                    <div class="col-2 bg-nature-7 p-050">
+                        <p>.bg-nature-7</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Land / Indigenous</h3>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2 bg-indigenous-1 f-primary-light p-050">
+                        <p>.bg-indigenous-1</p>
+                    </div>
+                    <div class="col-2 bg-indigenous-2 f-primary-light p-050">
+                        <p>.bg-indigenous-2</p>
+                    </div>
+                    <div class="col-2 bg-indigenous-3 f-primary-light p-050">
+                        <p>.bg-indigenous-3</p>
+                    </div>
+                    <div class="col-2 bg-indigenous-4 f-primary-light p-050">
+                        <p>.bg-indigenous-4</p>
+                    </div>
+                    <div class="col-2 bg-indigenous-5 f-primary-light p-050">
+                        <p>.bg-indigenous-5</p>
+                    </div>
+                    <div class="col-2 bg-indigenous-6 f-primary-light p-050">
+                        <p>.bg-indigenous-6</p>
+                    </div>
+                    <div class="col-2 bg-indigenous-7 f-primary-light p-050">
+                        <p>.bg-indigenous-7</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Sand</h3>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2 bg-sand-1 p-050">
+                        <p>.bg-sand-1</p>
+                    </div>
+                    <div class="col-2 bg-sand-2 p-050">
+                        <p>.bg-sand-2</p>
+                    </div>
+                    <div class="col-2 bg-sand-3 p-050">
+                        <p>.bg-sand-3</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Neutrals</h3>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2 bg-neutral-1 f-primary-light p-050">
+                        <p>.bg-neutral-1</p>
+                    </div>
+                    <div class="col-2 bg-neutral-2 p-050">
+                        <p>.bg-neutral-2</p>
+                    </div>
+                    <div class="col-2 bg-white p-050">
+                        <p>.bg-white</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Other</h3>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2 bg-focus f-primary-light p-050">
+                        <p>.bg-focus</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Alert classes </h3>
+                <hr />
+                <div class="grid-12">
+                    <div class="col-2 bg-danger f-primary-light p-050">
+                        <p>Danger<br>.bg-danger</p>
+                    </div>
+                    <div class="col-2 bg-warning f-primary-light p-050">
+                        <p>Warning <br>.bg-warning</p>
+                    </div>
+                    <div class="col-2 bg-success f-primary-light p-050">
+                        <p>Success<br>.bg-success</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h2>Borders</h2>
+                <h3>Primary Borders</h3>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2 border p-050">
+                        <p>.border</p>
+                    </div>
+                    <div class="col-2 border-left p-050">
+                        <p>.border-left</p>
+                    </div>
+                    <div class="col-2 border-left-med p-050">
+                        <p>.border-left-med - only appears on tablet or higher breakpoint</p>
+                    </div>
+                </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Border thick</h3>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2 border border-thick p-050">
+                        <p>.border .border-thick</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Misc Borders</h3>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2 border-bottom">
+                        <p>.border-bottom - matches the hr</p>
+                    </div>
+                    <div class="col-2 border-right">
+                        <p>.border-right - matches the hr</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="utilities" class="wrapper">
+            <div class="container">
+                <h2>Utilities</h2>
+                <h3>Margin and padding</h3>
+                <hr>
+                <section id="spacing" class="columns">
+                    <div class="col-12">
+                        <p>Padding & margin sizes are set in the spacing.scss file, to add one, you have to add to the
+                            map in variables.scss
+                            which
+                            will autogenerate the classes.</p>
+                    </div>
+
+                    <div class="col-6">
+                        <p class="f-overline f-uppercase">Class values</p>
+                        <ul>
+                            <li>.m — margin</li>
+                            <li>.p — padding</li>
+                        </ul>
+
+                        <p class="f-overline f-uppercase">Location values</p>
+                        <ul>
+                            <li> t = top</li>
+                            <li> b = bottom</li>
+                            <li> l = left</li>
+                            <li> r = right</li>
+                        </ul>
+
+                        <p class="f-overline f-uppercase">Breakpoints</p>
+                        <p>The classes are mobile by default</p>
+                        <ul>
+                            <li>med = > mobile breakpoint (768px)</li>
+                        </ul>
+
+                        <p class="f-overline f-uppercase">Size values</p>
+                        <p>Size values are the number presented / 100 as rem, so 100 = 1rem, 050 = 0.5rem</p>
+                        <ul>
+                            <li>0 = 0rem</li>
+                            <li>0125 = 0.125rem</li>
+                            <li>025 = 0.25rem</li>
+                            <li>0375 = 0.375rem</li>
+                            <li>050 = 0.5rem</li>
+                            <li>075 = 0.75rem</li>
+                            <li>100 = 1rem</li>
+                            <li>125 = 1.25rem</li>
+                            <li>150 = 1.5rem</li>
+                            <li>200 = 2rem</li>
+                            <li>250 = 2.5rem</li>
+                            <li>300 = 3rem</li>
+                            <li>350 = 3.5rem</li>
+                            <li>400 = 4rem</li>
+                            <li>450 = 4.5rem</li>
+                            <li>500 = 5rem</li>
+                        </ul>
+
+                        <p class="f-overline f-uppercase">Examples</p>
+                        <ul>
+                            <li> .p-t-050</li>
+                            <li> .m-b-200-med</li>
+                            <li> .p-250</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="infobox p-0 d-inline-block">
+                            <p>This has .p-0</p>
+                        </div>
+                        <div class="infobox p-050 d-inline-block">
+                            <p>This has .p-050</p>
+                        </div>
+                        <div class="infobox p-100 d-inline-block">
+                            <p>This has .p-100</p>
+                        </div>
+                        <div class="infobox p-200 d-inline-block">
+                            <p>This has .p-200</p>
+                        </div>
+                        <div class="infobox p-250 d-inline-block">
+                            <p>This has .p-250</p>
+                        </div>
+                        <div class="infobox p-300-med .p-100 d-inline-block">
+                            <p>This has .p-300-med .p-100</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <div class="columns">
+                    <div class="col-12">
+                        <h3>Display</h3>
+                        <hr>
+                    </div>
+                    <div class="col-12">
+                        <p class="f-overline f-uppercase">Display types</p>
+                        <p class="d-inline bg-neutral-1 f-primary-light">.d-inline = display: inline</p>
+                        <p class="d-inline-block bg-neutral-1 f-primary-light">.d-inline-block = display:
+                            inline-block
+                        </p>
+                        <p class="d-block bg-neutral-1 f-primary-light">.d-block = display: block</p>
+                        <p>.d-none = display: none</p>
+                        <p class="d-none-sml">.d-none-sml = display: none; when width less than mobile xxsmall
+                            (480px)</p>
+                        <p class="d-none-med">.d-none-med = display: none; when width greater than mobile (768px)</p>
+                        <p>.d-none-lrg = display: none; when width is greater than widescreen (1280px)</p>
+
+                        <h4>Box shadow</h4>
+                        <div class="bg--grey box-shadow" style="width: 10rem; height: 10rem;">.box-shadow</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Breakpoints</h3>
+                <hr>
+                <ul>
+                    <li><strong>Mobile breakpoint</strong> $mobile-breakpoint: 480px</li>
+                    <li><strong>Laptop / Tablet breakpoint</strong> $mobile-breakpoint: 769px</li>
+                    <li><strong>Desktop breakpoint</strong> $tablet-breakpoint: 1280px</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Box Shadows</h3>
+                <hr>
+                <div class="bg-grey box-shadow" style="width: 10rem; height: 10rem;">.box-shadow</div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Rounded corners</h3>
+                <hr>
+                <div class="col-12">
+                    <p>Rounded corners small .round-sm</p>
+                    <img class="landscape img25 round-sm" src="./Students-studying.jpg">
+
+                    <p>Rounded corners medium .round-med</p>
+                    <img class="landscape img25 round-med" src="./Students-studying.jpg">
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <div class="col-12">
+                    <h3>Flex classes</h3>
+                    <hr>
+                    <p class="f-overline f-uppercase">There are multiple built in flex classes</p>
+                    <ul>
+                        <li>.flex = display: flex;</li>
+                        <li>.flex-inline = display: inline-flex;</li>
+                        <li>.flex-row = flex-direction: row;</li>
+                        <li>.flex-column = flex-direction: column;</li>
+                        <li>.flex-wrap = flex-wrap: wrap;</li>
+                        <li>.flex-nowrap = flex-wrap: nowrap;</li>
+                        <li>There are classes for gap aswell</li>
+                        <ul>
+                            <li>.gap-size = gap: size;</li>
+                            <li>.gap-size-row = row-gap: size;</li>
+                            <li>.gap-size-column = column-gap: size;</li>
+                        </ul>
+                        <li>Size is to be replaced by an actual size</li>
+                        <ul>
+                            <li>.gap-0 = 0</li>
+                            <li>.gap-200 = 2rem</li>
+                            <li>.gap-050 = 0.5rem</li>
+                            <li>.gap-100 = 1rem</li>
+                            <li>.gap-100 = 2.5rem</li>
+                            <li>.gap-300 = 3rem</li>
+                        </ul>
+                        <li>There are classes for justify-content</li>
+                        <ul>
+                            <li>.space-around</li>
+                            <li>.space-evenly</li>
+                            <li>.space-between</li>
+                            <li>.space-center</li>
+                        </ul>
+                        <li>There are classes for align-items</li>
+                        <ul>
+                            <li>.align-start</li>
+                            <li>.align-center</li>
+                            <li>.align-end</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Opacity</h3>
+                <hr>
+                <section class="grid-12">
+                    <div class="col-4 bg-sun-4 opacity-80">
+                        <p>.opacity-80</p>
+                    </div>
+                    <div class="col-4 bg-sun-4 opacity-50">
+                        <p>.opacity-50</p>
+                    </div>
+                    <div class="col-4 bg-sun-4 opacity-30">
+                        <p>.opacity-30</p>
+                    </div>
+                    <div class="col-4 bg-sun-4 opacity-10">
+                        <p>.opacity-10</p>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Infobox</h3>
+                <hr>
+                <section class="grid-12">
+                    <div class="col-4 infobox">
+                        <p>.infobox</p>
+                    </div>
+                    <div class="col-4 infobox bg-ocean-3 f-primary-light">
+                        <p>.infobox .bg-ocean-3 .f-primary-light</p>
+                    </div>
+                    <div class="col-4 infobox bg-nature-2 f-primary-light m-b-200">
+                        <p>.infobox .bg-theme-11 .f-primary-light</p>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Misc</h3>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-4 border border-box p-050">
+                        <p>.border-box</p>
+                    </div>
+
+                    <div class="col-4 clearfix">
+                        <p>.clearfix</p>
+                    </div>
+
+                    <div class="col-4">
+                        <p>.h-100 = height: 100%</p>
+                    </div>
+
+                    <div class="col-4">
+                        <p>.w-100 = width: 100%</p>
+                    </div>
+
+                    <div class="col-4">
+                        <p>.scrollbar-0 - used for overflow elements, hides the scrollbar</p>
+                    </div>
+                    <div class="col-4">
+                        <p>.sr-only - for text content for Screen readers only</p>
+                    </div>
+                    <div class="col-4">
+                        <p>.hidden - for conntent that needs to be hidden from users</p>
+                    </div>
+                </div>
+                <h4>Cursors</h4>
+                <div class="grid-12">
+                    <div class="col-4 border grabbed p-050">
+                        <p>.grabbed</p>
+                    </div>
+                    <div class="col-4 border grab p-050">
+                        <p>.grab</p>
+                    </div>
+                    <div class="col-4 border pointer p-050">
+                        <p>.pointer</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h2>Icons</h2>
+                <h3>External Links Icon</h3>
+                <hr>
+                <ul>
+                    <li><a href="https://www.youtube.com" target="_blank">This is an external link for youtube</a>
+                    </li>
+                    <li><a href="https://www.jcu.edu.au/about-jcu/contact-us">This is an internal link to the
+                            contact us
+                            page</a></li>
+                    <li><a href="https://www.jcu.edu.au/about-jcu/contact-us" target="_blank">This is an internal
+                            link
+                            with target="_blank". It's to target link and redirect assets</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Button Icons</h3>
+                <hr>
+                <p>All icons have <strong>.flex .space-between .align-center</strong> on the p element</p>
+                <p>You can make all icons appear before by adding -before to the end of it, e.g.
+                    <strong>.plus-before</strong>
+                </p>
+                <p>All the same additional classes work the same, so a small version would be <strong>.plus-before
+                        .plus-s</strong></p>
+                <h4>Plus Icon</h4>
+                <hr>
+                <div class="grid-12">
+                    <!-- Plus -->
+                    <div class="col-1">
+                        <p class="plus flex space-between align-center">.plus</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="plus active flex space-between align-center">.plus .active</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="plus plus-s flex space-between align-center">.plus .plus-s</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="plus plus-s active flex space-between align-center">.plus .plus-s .active</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="plus-bg flex space-between align-center">.plus-bg</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="plus-bg active flex space-between align-center">.plus-bg .active</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="plus-bg plus-bg-s flex space-between align-center">.plus-bg .plus-s</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="plus-bg plus-bg-s active flex space-between align-center">.plus-bg .plus-s .active</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="plus-before flex space-between align-center">.plus-before</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h4>Arrow Right Icon</h4>
+                <hr>
+                <div class="grid-12">
+                    <!-- Arrows -->
+                    <div class="col-1">
+                        <p class="arrow-r  flex space-between align-center">.arrow-r</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="arrow-r active flex space-between align-center">.arrow-r .active</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="arrow-r arrow-r-s flex space-between align-center">.arrow-r .arrow-r-s</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="arrow-r arrow-r-s active flex space-between align-center">.arrow-r .arrow-r-s .active
+                        </p>
+                    </div>
+                    <div class="col-2">
+                        <p class="arrow-r-bg flex space-between align-center">.arrow-r-bg</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="arrow-r-bg active flex space-between align-center">.arrow-r-bg .active</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="arrow-r-bg arrow-r-bg-s flex space-between align-center">.arrow-r-bg .arrow-r-s</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="arrow-r-bg arrow-r-bg-s active flex space-between align-center">.arrow-r-bg .arrow-r-s
+                            .active</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chevrons -->
+        <!-- Right Chevron -->
+        <section class="wrapper">
+            <div class="container">
+                <h4>Right Chevron</h4>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2">
+                        <p class="chevron-r flex space-between align-center">.chevron-r</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-r active flex space-between align-center">.chevron-r .active</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-r chevron-r-s flex space-between align-center">.chevron-r .chevron-r-s</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="chevron-r chevron-r-s active flex space-between align-center">.chevron-r .chevron-r-s
+                            .active
+                        </p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-r-bg flex space-between align-center">.chevron-r-bg</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-r-bg active flex space-between align-center">.chevron-r-bg .active</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="chevron-r-bg chevron-r-bg-s flex space-between align-center">.chevron-r-bg
+                            .chevron-r-s</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="chevron-r-bg arrow-r-bg-s active flex space-between align-center">.chevron-r-bg
+                            .arrow-r-s
+                            .active</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Left chevron -->
+        <section class="wrapper">
+            <div class="container">
+                <h4>Left Chevron</h4>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2">
+                        <p class="chevron-l flex space-between align-center">.chevron-l</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-l active flex space-between align-center">.chevron-l .active</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-l chevron-l-s flex space-between align-center">.chevron-l .chevron-l-s</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="chevron-l chevron-l-s active flex space-between align-center">.chevron-l .chevron-l-s
+                            .active
+                        </p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-l-bg flex space-between align-center">.chevron-l-bg</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-l-bg active flex space-between align-center">.chevron-l-bg .active</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="chevron-l-bg chevron-l-bg-s flex space-between align-center">.chevron-l-bg
+                            .chevron-r-s</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="chevron-l-bg arrow-l-bg-s active flex space-between align-center">.chevron-l-bg
+                            .arrow-l-s
+                            .active</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Up chevron -->
+        <section class="wrapper">
+            <div class="container">
+                <h4>Up Chevron</h4>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2">
+                        <p class="chevron-u flex space-between align-center">.chevron-u</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-u active flex space-between align-center">.chevron-u .active</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-u chevron-u-s flex space-between align-center">.chevron-u .chevron-u-s</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="chevron-u chevron-u-s active flex space-between align-center">.chevron-u .chevron-u-s
+                            .active
+                        </p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-u-bg flex space-between align-center">.chevron-u-bg</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-u-bg active flex space-between align-center">.chevron-u-bg .active</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="chevron-u-bg chevron-u-bg-s flex space-between align-center">.chevron-u-bg
+                            .chevron-r-s</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="chevron-u-bg arrow-u-bg-s active flex space-between align-center">.chevron-u-bg
+                            .arrow-u-s
+                            .active</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Down chevron -->
+        <section class="wrapper">
+            <div class="container">
+                <h4>Down Chevron</h4>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2">
+                        <p class="chevron-d flex space-between align-center">.chevron-d</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-d active flex space-between align-center">.chevron-d .active</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-d chevron-d-s flex space-between align-center">.chevron-d .chevron-d-s</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="chevron-d chevron-d-s active flex space-between align-center">.chevron-d .chevron-d-s
+                            .active
+                        </p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-d-bg flex space-between align-center">.chevron-d-bg</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-d-bg active flex space-between align-center">.chevron-d-bg .active</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="chevron-d-bg chevron-d-bg-s flex space-between align-center">.chevron-d-bg
+                            .chevron-r-s</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="chevron-d-bg arrow-d-bg-s active flex space-between align-center">.chevron-d-bg
+                            .arrow-d-s
+                            .active</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scroll button chevrons -->
+        <section class="wrapper">
+            <div class="container">
+                <h4>Scroll button chevrons</h4>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-2">
+                        <p class="chevron-scroll-r flex space-between align-center">.chevron-scroll-r</p>
+                    </div>
+                    <div class="col-2">
+                        <p class="chevron-scroll-l flex space-between align-center">.chevron-scroll-l</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <style>
+            .border-black-grid-display p {
+                border: 1px black solid;
+                margin: 0;
+                padding: 1rem;
+            }
+        </style>
+        <div class="wrapper">
+            <div class="container">
+                <h2>Grid Styles — CSS Grid</h2>
+                <h3>Understanding the naming and classes convention</h3>
+                <hr>
+                <p>The grid system is the core layout to be used with components, it uses the CSS display of
+                    grid to
+                    ensure items in components are in line. It is used with the class <strong>.grid-12</strong>
+                </p>
+                <p>By default the grid has a gap of 1rem, you can remove this gap by adding the class
+                    <strong>.nogap</strong> to the parent.
+                </p>
+                <p>grid sizing is done with <strong>.col-x classes</strong>, where x is equal to a number from 1-12. The
+                    number
+                    correlates to the span value, so <strong>.col-3</strong> is equal to span 3.</p>
+                <p>.col-x is the default sizing (mobile), you can change the size of the element at different
+                    breakpoints by adding another class with a sizing on. <strong>.col-x-med</strong> is used for laptop
+                    and <strong>.col-x-lrg</strong> is used for desktop / widescreen.</p>
+                <p>All elements need a default <strong>.col-x</strong> but not all elements need a
+                    <strong>.col-x-med</strong> etc. An example of an element with all breakpoints is
+                    <strong>(class="col-12 col-6-med col-3-lrg")</strong>
+                </p>
+
+                <h3>.grid-12</h3>
+                <div class="grid-12">
+                    <div class="col-6 col-4-med col-3-lrg border-black-grid-display">
+                        <p>.col-6 .col-4-med .col-3-lrg</p>
+                    </div>
+                    <div class="col-6 col-4-med col-3-lrg border-black-grid-display">
+                        <p>.col-6 .col-4-med .col-3-lrg</p>
+                    </div>
+                    <div class="col-6 col-4-med col-3-lrg border-black-grid-display">
+                        <p>.col-6 .col-4-med .col-3-lrg</p>
+                    </div>
+                    <div class="col-6 col-4-med col-3-lrg border-black-grid-display">
+                        <p>.col-6 .col-4-med .col-3-lrg</p>
+                    </div>
+                    <div class="col-4 border-black-grid-display">
+                        <p>.col-4</p>
+                    </div>
+                    <div class="col-4 border-black-grid-display">
+                        <p>.col-4</p>
+                    </div>
+                    <div class="col-4 border-black-grid-display">
+                        <p>.col-4</p>
+                    </div>
+                    <div class="col-6 border-black-grid-display">
+                        <p>.col-6</p>
+                    </div>
+                    <div class="col-6 border-black-grid-display">
+                        <p>.col-6</p>
+                    </div>
+                    <div class="col-4 border-black-grid-display">
+                        <p>.col-4</p>
+                    </div>
+                    <div class="col-8 border-black-grid-display">
+                        <p>.col-8</p>
+                    </div>
+                    <div class="col-6 border-black-grid-display">
+                        <p>.col-6</p>
+                    </div>
+                    <div class="col-3 border-black-grid-display">
+                        <p>.col-3</p>
+                    </div>
+                    <div class="col-3 border-black-grid-display">
+                        <p>.col-3</p>
+                    </div>
+                    <div class="col-12 border-black-grid-display">
+                        <p>.col-12</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div class="container">
+                <h2>Column Styles — CSS Flex </h2>
+                <h3>Understanding the naming and classes convention</h3>
+                <hr>
+                <p>The column system is the secondary layout option to be used with components, it uses the CSS
+                    display
+                    of flex and aligns with .grid-12. It is used with the class <strong>.columns</strong></p>
+                <p>By default the columns have gaps of 1rem, you can remove this gap by adding the class
+                    <strong>.nogap</strong> to the parent.
+                </p>
+                <p>grid sizing is done with <strong>.col-x classes</strong>, where x is equal to a number from 1-12. The
+                    number
+                    correlates to the span value, so <strong>.col-3</strong> is equal to span 3.</p>
+                <p>.col-x is the default sizing (mobile), you can change the size of the element at different
+                    breakpoints by adding another class with a sizing on. <strong>.col-x-med</strong> is used for laptop
+                    and <strong>.col-x-lrg</strong> is used for desktop / widescreen.</p>
+                <p>All elements need a default <strong>.col-x</strong> but not all elements need a
+                    <strong>.col-x-med</strong> etc. An example of an element with all breakpoints is
+                    <strong>(class="col-12 col-6-med col-3-lrg")</strong>
+                </p>
+                <p>The column system uses flex-grow to force 100% on elements, this means that if you have .col-3 and
+                    nothing else to fill gap, it will expand that element to 100% width</p>
+
+                <h3>.columns .nogap</h3>
+                <div class="columns nogap">
+                    <div class="col-6 col-4-med col-3-lrg border-black-grid-display">
+                        <p>.col-6 .col-4-med .col-3-lrg</p>
+                    </div>
+                    <div class="col-6 col-4-med col-3-lrg border-black-grid-display">
+                        <p>.col-6 .col-4-med .col-3-lrg</p>
+                    </div>
+                    <div class="col-6 col-4-med col-3-lrg border-black-grid-display">
+                        <p>.col-6 .col-4-med .col-3-lrg</p>
+                    </div>
+                    <div class="col-6 col-4-med col-3-lrg border-black-grid-display">
+                        <p>.col-6 .col-4-med .col-3-lrg</p>
+                    </div>
+                    <div class="col-4 border-black-grid-display">
+                        <p>.col-4</p>
+                    </div>
+                    <div class="col-4 border-black-grid-display">
+                        <p>.col-4</p>
+                    </div>
+                    <div class="col-4 border-black-grid-display">
+                        <p>.col-4</p>
+                    </div>
+                    <div class="col-6 border-black-grid-display">
+                        <p>.col-6</p>
+                    </div>
+                    <div class="col-6 border-black-grid-display">
+                        <p>.col-6</p>
+                    </div>
+                    <div class="col-4 border-black-grid-display">
+                        <p>.col-4</p>
+                    </div>
+                    <div class="col-8 border-black-grid-display">
+                        <p>.col-8</p>
+                    </div>
+                    <div class="col-6 border-black-grid-display">
+                        <p>.col-6</p>
+                    </div>
+                    <div class="col-3 border-black-grid-display">
+                        <p>.col-3</p>
+                    </div>
+                    <div class="col-3 border-black-grid-display">
+                        <p>.col-3</p>
+                    </div>
+                    <div class="col-12 border-black-grid-display">
+                        <p>.col-12</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="wrapper">
+            <div class="container">
+                <h2 class="header">Component structure</h2>
+                <p>This is the preferred component layout</p>
+                <h3>Structure</h3>
+                <hr>
+                <ul>
+                    <li>section class="wrapper"</li>
+                    <li>div class="container" This sets the column width using max-width. For a full width
+                        component
+                        leave this class out</li>
+                    <li>h2 class="header"</li>
+                    <li>Content / Grid / columns etc here </li>
+                </ul>
+                <h3>Examples</h3>
+            </div>
+        </section>
+
+        <section class="wrapper bg-sand-2" id="article-grid-121331">
+            <div class="container">
+                <h2 class="header table-content-ignore">Heading</h2>
+                <section class="grid-12">
+                    <div class="col-4">
+                        <p>This is a col-4 column</p>
+                    </div>
+                    <div class="col-4">
+                        <p>This is a col-4 column</p>
+                    </div>
+                    <div class="col-4">
+                        <p>This is a col-4 column</p>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="wrapper bg-ocean-3" id="article-grid-121331">
+            <div class="container">
+                <h2 class="header table-content-ignore">This is the header</h2>
+                <section class="grid-12">
+                    <div class="col-4">
+                        <p>This is a col-4 column</p>
+                    </div>
+                    <div class="col-4">
+                        <p>This is a col-4 column</p>
+                    </div>
+                    <div class="col-4">
+                        <p>This is a col-4 column</p>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section class="wrapper bg-white ">
+            <div class="container">
+                <section>
+                    <h3 class="m-b-100">Overflow component</h3>
+                </section>
+                <hr>
+                <div
+                    class="columns nogap flex-nowrap overflow_x-auto scrollbar-hide f-center overflow-scroll scrollwheel-scroll grab">
+                    <summary class="col-4-overflow m-b-0 no-select">
+                        <p class="f-special-1 m-b-0 f-secondary f-regular">.col-4-overflow</p>
+                    </summary>
+
+                    <summary class="col-4-overflow m-b-0 no-select">
+                        <p class="f-special-1 m-b-0 f-secondary f-regular">.col-4-overflow</p>
+                    </summary>
+
+                    <summary class="col-4-overflow m-b-0 no-select">
+                        <p class="f-special-1 m-b-0 f-secondary f-regular">.col-4-overflow</p>
+                    </summary>
+
+                    <summary class="col-4-overflow m-b-0 no-select">
+                        <p class="f-special-1 m-b-0 f-secondary f-regular">.col-4-overflow</p>
+                    </summary>
+                </div>
+                <hr>
+                <summary>
+                    <p>Overflow components need to follow the structure of this component to work.</p>
+                    <p>Overflow components must used flex <strong>.columns</strong>, they also need
+                        <strong>.flex-nowrap</strong>, <strong>.overflow_x-auto</strong>,
+                        <strong>.overflow-scroll</strong> & <strong>.scrollwheel-scroll</strong>to work.
+                    </p>
+                    <p>.overflow-scroll is required for click drag, it has no styling, it is purely used as an element
+                        finder for JS.</p>
+                    <p>.scrollwheel-scroll is required for horizontal scrolling with mouse wheel event, it has no
+                        styling, it is purely used as an element
+                        finder for JS.</p>
+                    <p>optional classes are <strong>.scrollbar-hide</strong> & <strong>.grab</strong></p>
+                </summary>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h2>Images</h2>
+                <h3>Image placement within page options</h3>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-8">
+                        <h4>Default Image</h4>
+                        <img src="./explore-student-life.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h3>Image class options</h3>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-8">
+                        <h4>.img-row 3 images across</h4>
+                        <div class="img-row">
+                            <img src="./explore-student-life.jpg">
+                            <img src="./JCU-Townsville.jpg">
+                            <img src="./Students-studying.jpg">
+                        </div>
+
+                        <h4>.img-row 2 images across</h4>
+                        <div class="img-row">
+                            <img src="./explore-student-life.jpg">
+                            <img src="./JCU-Townsville.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <div class="grid-12">
+                    <div class="col-6">
+                        <h3>Aspect ratio & width</h3>
+                        <hr>
+                        <h4>Landscape .landscape .img75</h4>
+                        <img class="landscape img75" src="./Students-studying.jpg">
+
+                        <h4>Fullscreen .landscape-2 .img50</h4>
+                        <img class="landscape-2 img50" src="./Students-studying.jpg">
+
+                        <h4>Fullscreen .landscape-3 .img50</h4>
+                        <img class="landscape-3 img50" src="./Students-studying.jpg">
+
+                        <h4>Portrait .portrait .img25</h4>
+                        <img class="portrait img25" src="./Students-studying.jpg">
+
+                        <h4>Portrait .portrait-2 .img25</h4>
+                        <img class="portrait-2 img25" src="./Students-studying.jpg">
+
+                        <h4>Portrait .portrait-3 .img25</h4>
+                        <img class="portrait-3 img25" src="./Students-studying.jpg">
+
+                        <h4>Square .square .img50</h4>
+                        <img class="square img50" src="./Students-studying.jpg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tables" class="wrapper">
+            <div class="container">
+                <h2>Tables</h2>
+                <h3>Table options</h3>
+                <hr>
+                <h4>Default table</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Header 1</th>
+                            <th>Header 2</th>
+                            <th>Header 3</th>
+                            <th>Header 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Row 1 Col 1</td>
+                            <td>Row 1 Col 2</td>
+                            <td>Row 1 Col 3</td>
+                            <td>Row 1 Col 4</td>
+                        </tr>
+                        <tr>
+                            <td>Row 2 Col 1</td>
+                            <td>Row 2 Col 2</td>
+                            <td>Row 2 Col 3</td>
+                            <td>Row 2 Col 4</td>
+                        </tr>
+                        <tr>
+                            <td>Row 3 Col 1</td>
+                            <td>Row 3 Col 2</td>
+                            <td>Row 3 Col 3</td>
+                            <td>Row 3 Col 4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h4>Borderless table with .border-0</h4>
+                <table class="border-0">
+                    <thead>
+                        <tr>
+                            <th>Header 1</th>
+                            <th>Header 2</th>
+                            <th>Header 3</th>
+                            <th>Header 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Row 1 Col 1</td>
+                            <td>Row 1 Col 2</td>
+                            <td>Row 1 Col 3</td>
+                            <td>Row 1 Col 4</td>
+                        </tr>
+                        <tr>
+                            <td>Row 2 Col 1</td>
+                            <td>Row 2 Col 2</td>
+                            <td>Row 2 Col 3</td>
+                            <td>Row 2 Col 4</td>
+                        </tr>
+                        <tr>
+                            <td>Row 3 Col 1</td>
+                            <td>Row 3 Col 2</td>
+                            <td>Row 3 Col 3</td>
+                            <td>Row 3 Col 4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h4>Table with mobile scroll</h4>
+                <p>Table with mobile scroll has a wrapper div with <strong>.overflow_x-auto</strong> then the
+                    table has <strong>.mobile-overflow</strong>. The parent is required for this to work.
+                </p>
+                <div class="overflow_x-auto">
+                    <table class="mobile-overflow">
+                        <thead>
+                            <tr>
+                                <th>Header 1</th>
+                                <th>Header 2</th>
+                                <th>Header 3</th>
+                                <th>Header 4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Row 1 Col 1</td>
+                                <td>Row 1 Col 2</td>
+                                <td>Row 1 Col 3</td>
+                                <td>Row 1 Col 4</td>
+                            </tr>
+                            <tr>
+                                <td>Row 2 Col 1</td>
+                                <td>Row 2 Col 2</td>
+                                <td>Row 2 Col 3</td>
+                                <td>Row 2 Col 4</td>
+                            </tr>
+                            <tr>
+                                <td>Row 3 Col 1</td>
+                                <td>Row 3 Col 2</td>
+                                <td>Row 3 Col 3</td>
+                                <td>Row 3 Col 4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h4>Vertical Table</h4>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <td>Jane Doe</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>jane@example.com</td>
+                    </tr>
+                    <tr>
+                        <th>Phone</th>
+                        <td>(123) 456-7890</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+
+        <section class="wrapper">
+            <div class="container">
+                <h2>Commonly used blocks</h2>
+                <p>This section contains commonly used blocks that can be copied for use on the site.</p>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-8">
+                        <h3>Blockquote</h3>
+                        <blockquote>
+                            <p>Quote goes here</p>
+                            <p>Name of the author</p>
+                            <p>OPTIONAL - xtra information / degree</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h2>Hover states</h2>
+                <hr>
+                <div class="grid-12">
+                    <div class="col-3">
+                        <h3>.image-hover</h3>
+                        <p><strong>.image-hover</strong> requires a div with the class .image-hover applied AND a
+                            background colour e.g. bg-ocean-3 applied. The img sits inside the wrapper div.</p>
+                        <div class="image-hover bg-ocean-3">
+                            <img src="./Students-studying.jpg">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <h3 class="hover">.hover</h3>
+                        <p class="hover">This is the default hover state class for components, used primarily with
+                            titles e.g. article
+                            title. Because of the nature of CCTs there is a mixin that contains the styling for the
+                            hover (@include defaultHover). This mixin is to be used when you need to alter the selector
+                            used with the hover, e.g. Wrapped an article with a link element, want the title to hover
+                            when any part of the article is hovered.
+                        </p>
+                    </div>
+                    <div class="col-3"><a href="#" class="nodec-hover"><strong>.nodec-hover</strong> override
+                            text-decoration on hover</a></div>
+                    <div class="col-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <div class="grid-12">
+                    <div class="col-8">
+                        <h3>Infobox with CTA</h3>
+                        <summary class="infobox">
+                            <h2 class="table-content-ignore">H2 heading goes here</h2>
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                                voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
+                                occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
+                                mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et
+                                expedita distinctio.</p>
+                            <a href="Link goes here" class="btn">CTA text goes here</a>
+                        </summary>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="wrapper">
+            <div class="container">
+                <h2>Component Examples</h2>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
