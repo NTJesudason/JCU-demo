@@ -290,7 +290,7 @@ import { ElementName } from '@global_components/element/elementName';
 
 ### Environment variables
 
-To work with environment variables and components that fetch data, create an `.env` file.
+To work with environment variables and components that fetch data, create a `.env` file.
 
 This file has been added to `.gitignore` to prevent it from being pushed to the repository.
 
