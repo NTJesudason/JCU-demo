@@ -1,4 +1,4 @@
-name: CI - Vitest Coverage
+name: CI - Vitest Coverage Settings
 
 on:
   push:
